@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.example.demo.backend.equipo8.dto.UsuarioDTO;
 import com.example.demo.backend.equipo8.service.ICrudService;
 
@@ -26,13 +27,14 @@ public class ControladorUsuario {
 
 	@Autowired
 	private ICrudService servicio;
-
+	
 	@ResponseBody
 	@PostMapping("REST")
 	public UsuarioDTO agregarUsuario(@Valid @NonNull @RequestBody UsuarioDTO dto) {
 		return servicio.save(dto);
 	}
-
+	
+	
 	@ResponseBody
 	@GetMapping("REST")
 	public List<UsuarioDTO> getAllUsuarios() {
@@ -72,5 +74,6 @@ public class ControladorUsuario {
 			return false;
 		}
 	}
+	
 
 }

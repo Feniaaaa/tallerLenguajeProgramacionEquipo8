@@ -36,15 +36,17 @@ public class UsuarioEntity {
 	private String login;
 	
 	@NotBlank
-	@Column(name = "contraseña")
-	private String contraseña;
+	@Column(name = "contrasena")
+	private String contrasena;
 
 	public UsuarioEntity(@JsonProperty("id") int id, @JsonProperty("nombre") String nombre,
-			@JsonProperty("apellido") String apellido) {
+			@JsonProperty("apellido") String apellido,@JsonProperty("login") String login,@JsonProperty("contrasena") String contrasena) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.login = login;
+		this.contrasena = contrasena;
 	}
 
 	public UsuarioDTO toDTO() {
@@ -52,6 +54,8 @@ public class UsuarioEntity {
 		dto.setId(this.getId());
 		dto.setApellido(this.getApellido());
 		dto.setNombre(this.getNombre());
+		dto.setLogin(this.getLogin());
+		dto.setContrasena(this.getContrasena());
 		return dto;
 	}
 

@@ -17,5 +17,11 @@ public class UsuarioDTO {
 
 	@NotBlank
 	private String apellido;
+	
+	@NotBlank
+	private String login;
+	
+	@NotBlank
+	private String contrasena;
 
 }

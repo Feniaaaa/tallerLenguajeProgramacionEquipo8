@@ -1,5 +1,6 @@
 package com.example.demo.backend.equipo8.dto;
 
+
 import javax.validation.constraints.NotBlank;
 
 import com.example.demo.backend.equipo8.entity.UsuarioEntity;
@@ -7,6 +8,7 @@ import com.example.demo.backend.equipo8.entity.UsuarioEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @NoArgsConstructor
@@ -19,12 +21,20 @@ public class UsuarioDTO {
 
 	@NotBlank
 	private String apellido;
+	
+	@NotBlank
+	private String login;
+	
+	@NotBlank
+	private String contrasena;
 
 	public UsuarioEntity toEntity() {
 		UsuarioEntity e = new UsuarioEntity();
 		e.setId(this.getId());
 		e.setApellido(this.getApellido());
 		e.setNombre(this.getNombre());
+		e.setLogin(this.getLogin());
+		e.setContrasena(this.getContrasena());
 		return e;
 	}
 }

@@ -10,7 +10,8 @@ public interface ICrudService {
 
 	public UsuarioDTO findByIdREST(int id);
 
-	public UsuarioDTO saveREST(UsuarioDTO persona);
+	public UsuarioDTO saveREST(UsuarioDTO usuario);
 
 	public UsuarioDTO deleteREST(int id);
+	
 }
