@@ -12,6 +12,9 @@ import com.example.demo.backend.equipo8.dto.UsuarioDTO;
 import com.example.demo.backend.equipo8.entity.UsuarioEntity;
 import com.example.demo.backend.equipo8.repository.IUsuarioRepository;
 
+
+
+
 @Component
 @Service
 public class CrudServiceUsuarioImpl implements ICrudService {
@@ -43,5 +46,7 @@ public class CrudServiceUsuarioImpl implements ICrudService {
 	public void delete(UsuarioDTO p) {
 		data.delete(p.toEntity());
 	}
+	
+    
 
 }

@@ -1,5 +1,6 @@
 package com.example.demo.backend.equipo8.entity;
 
+import com.example.demo.backend.equipo8.dto.BoletaDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
@@ -34,6 +35,13 @@ public class BoletaEntity {
         this.monto = monto;
         this.fecha = fecha;
     }
-
+    
+	public BoletaDTO toDTO() {
+		BoletaDTO dto = new BoletaDTO();
+		dto.setId(this.getId());
+		dto.setMonto(this.getMonto());
+		dto.setFecha(this.getFecha());
+		return dto;
+	}
 }
 

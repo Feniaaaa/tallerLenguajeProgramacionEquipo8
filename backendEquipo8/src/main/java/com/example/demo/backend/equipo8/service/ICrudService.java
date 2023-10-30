@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import com.example.demo.backend.equipo8.dto.UsuarioDTO;
 
+
 public interface ICrudService {
+	
 	public List<UsuarioDTO> findAll();
 
 	public Optional<UsuarioDTO> findById(int id);
@@ -13,4 +15,6 @@ public interface ICrudService {
 	public UsuarioDTO save(UsuarioDTO dto);
 
 	public void delete(UsuarioDTO dto);
+	
+
 }

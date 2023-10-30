@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -31,22 +33,23 @@ public class UsuarioEntity {
 	@Column(name = "apellido")
 	private String apellido;
 	
-	@NotBlank
-	@Column(name = "login")
-	private String login;
+	@ManyToOne
+    @JoinColumn(name = "id_login")
+    CredencialesEntity CredencialesLogin;
 	
-	@NotBlank
-	@Column(name = "contrasena")
-	private String contrasena;
+	@ManyToOne
+    @JoinColumn(name = "id_contrasena")
+    CredencialesEntity CredencialesContrasena;
+	
+
 
 	public UsuarioEntity(@JsonProperty("id") int id, @JsonProperty("nombre") String nombre,
-			@JsonProperty("apellido") String apellido,@JsonProperty("login") String login,@JsonProperty("contrasena") String contrasena) {
+			@JsonProperty("apellido") String apellido) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.login = login;
-		this.contrasena = contrasena;
+
 	}
 
 	public UsuarioDTO toDTO() {
@@ -54,8 +57,6 @@ public class UsuarioEntity {
 		dto.setId(this.getId());
 		dto.setApellido(this.getApellido());
 		dto.setNombre(this.getNombre());
-		dto.setLogin(this.getLogin());
-		dto.setContrasena(this.getContrasena());
 		return dto;
 	}
 

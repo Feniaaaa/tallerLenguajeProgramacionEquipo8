@@ -16,6 +16,8 @@
                 <th>ID</th>
                 <th>NOMBRE</th>
                 <th>APELLIDO</th>
+                <th>LOGIN</th>
+                <th>CONTRASEÑA</th>
                 <th>EDITAR/ELIMINAR</th>
             </tr>
         </thead>
@@ -24,6 +26,8 @@
                 <td th:text="${usuario.id}">${usuario.id}</td>
                 <td th:text="${usuario.nombre}">${usuario.nombre}</td>
                 <td th:text="${usuario.apellido}">${usuario.apellido}</td>
+                <td th:text="${usuario.login}">${usuario.login}</td>
+                <td th:text="${usuario.contrasena}">${usuario.contrasena}</td>
                 <td>
                     <a class="btn btn-warning" th:href="@{/usuario/editar/REST/}+${usuario.id}" >Editar</a>
                     <a class="btn btn-danger"  th:onclick="fxJSeliminar([[${usuario.id}]])">Eliminar</a>
