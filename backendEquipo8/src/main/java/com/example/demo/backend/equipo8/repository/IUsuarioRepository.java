@@ -8,5 +8,5 @@ import com.example.demo.backend.equipo8.entity.UsuarioEntity;
 @Repository
 public interface IUsuarioRepository extends CrudRepository<UsuarioEntity, Integer> {
 	
-	UsuarioEntity findBylogin(String login);
+	//UsuarioEntity findBylogin(String login);
 }

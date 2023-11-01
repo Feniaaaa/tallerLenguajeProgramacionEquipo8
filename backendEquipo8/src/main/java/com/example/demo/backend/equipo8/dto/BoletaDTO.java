@@ -1,5 +1,7 @@
 package com.example.demo.backend.equipo8.dto;
 
+import java.sql.Date;
+
 import javax.validation.constraints.NotBlank;
 
 import com.example.demo.backend.equipo8.entity.BoletaEntity;
@@ -16,10 +18,13 @@ public class BoletaDTO {
 	private int id;
 
 	@NotBlank
-	private String monto;
+	private int monto;
 
 	@NotBlank
-	private String fecha;
+	private Date fecha;
+	
+	@NotBlank
+	private String metodo_pago;
 	
 
 	public BoletaEntity toEntity() {
@@ -27,6 +32,7 @@ public class BoletaDTO {
 		e.setId(this.getId());
 		e.setMonto(this.getMonto());
 		e.setFecha(this.getFecha());
+		e.setMetodo_pago(this.getMetodo_pago());
 		return e;
 	}
 }

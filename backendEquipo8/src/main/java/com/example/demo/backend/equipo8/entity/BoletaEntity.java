@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -21,15 +23,18 @@ public class BoletaEntity {
 
     @NotBlank
     @Column(name = "monto")
-    private String monto;
+    private int monto;
     
     @NotBlank
     @Column(name = "fecha")
-    private String fecha;
+    private Date fecha;
+    
+    @NotBlank
+    @Column(name = "metodo_pago")
+    private String metodo_pago;
 
 
-
-    public BoletaEntity(@JsonProperty("id") int id,@JsonProperty("monto") String monto, @JsonProperty("fecha") String fecha) {
+    public BoletaEntity(@JsonProperty("id") int id,@JsonProperty("monto") int monto, @JsonProperty("fecha") Date fecha) {
         super();
         this.id = id;
         this.monto = monto;
@@ -41,6 +46,7 @@ public class BoletaEntity {
 		dto.setId(this.getId());
 		dto.setMonto(this.getMonto());
 		dto.setFecha(this.getFecha());
+		dto.setMetodo_pago(this.getMetodo_pago());
 		return dto;
 	}
 }
