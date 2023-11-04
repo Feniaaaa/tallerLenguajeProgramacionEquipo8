@@ -15,7 +15,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name="boletas")
+@Table(name="boleta")
 public class BoletaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,18 +23,18 @@ public class BoletaEntity {
 
     @NotBlank
     @Column(name = "monto")
-    private int monto;
+    private String monto;
     
     @NotBlank
     @Column(name = "fecha")
-    private Date fecha;
+    private String fecha;
     
-    @NotBlank
-    @Column(name = "metodo_pago")
-    private String metodo_pago;
+    @OneToOne
+    @JoinColumn(name="tipodeboleta_id")
+    private TipoDeBoletaEntity tipoboleta;
 
 
-    public BoletaEntity(@JsonProperty("id") int id,@JsonProperty("monto") int monto, @JsonProperty("fecha") Date fecha) {
+    public BoletaEntity(@JsonProperty("id") int id,@JsonProperty("monto") String monto, @JsonProperty("fecha") String fecha) {
         super();
         this.id = id;
         this.monto = monto;
@@ -46,7 +46,6 @@ public class BoletaEntity {
 		dto.setId(this.getId());
 		dto.setMonto(this.getMonto());
 		dto.setFecha(this.getFecha());
-		dto.setMetodo_pago(this.getMetodo_pago());
 		return dto;
 	}
 }

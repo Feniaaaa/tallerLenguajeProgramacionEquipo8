@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Mantenedor Usuario API REST</title>
+    <title>Mantenedor Boleta API REST</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -14,23 +14,21 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>NOMBRE</th>
-                <th>APELLIDO</th>
-                <th>LOGIN</th>
-                <th>CONTRASEÑA</th>
+                <th>MONTO</th>
+                <th>FECHA</th>
+                <th>TIPO DE BOLETA</th>
                 <th>EDITAR/ELIMINAR</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="usuario:${usuarios}">
-                <td th:text="${usuario.id}">${usuario.id}</td>
-                <td th:text="${usuario.nombre}">${usuario.nombre}</td>
-                <td th:text="${usuario.apellido}">${usuario.apellido}</td>
-                <td th:text="${usuario.login}">${usuario.login}</td>
-                <td th:text="${usuario.contrasena}">${usuario.contrasena}</td>
+            <tr th:each="boleta:${boletas}" >
+                <td th:text="${boleta.id}">${boleta.id}</td>
+                <td th:text="${boleta.monto}">${boleta.monto}</td>
+                <td th:text="${boleta.fecha}">${boleta.fecha}</td>
+                <td th:text="${boleta.tipoboleta_id}">${boleta.tipoboleta_id}</td>
                 <td>
-                    <a class="btn btn-warning" th:href="@{/usuario/editar/REST/}+${usuario.id}" >Editar</a>
-                    <a class="btn btn-danger"  th:onclick="fxJSeliminar([[${usuario.id}]])">Eliminar</a>
+                    <a class="btn btn-warning" th:href="@{/boleta/editar/REST/}+${boleta.id}" >Editar</a>
+                    <a class="btn btn-danger"  th:onclick="fxJSeliminar([[${boleta.id}]])">Eliminar</a>
                 </td>
             </tr>
         </tbody>

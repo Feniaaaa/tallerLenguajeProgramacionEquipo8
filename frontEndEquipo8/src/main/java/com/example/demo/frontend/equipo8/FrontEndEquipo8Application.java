@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 public class FrontEndEquipo8Application {
 
-	//http://localhost:8081/persona/listar/REST
+	//http://localhost:8081/boleta/listar/REST
 	public static void main(String[] args) {
 		SpringApplication.run(FrontEndEquipo8Application.class, args);
 	}

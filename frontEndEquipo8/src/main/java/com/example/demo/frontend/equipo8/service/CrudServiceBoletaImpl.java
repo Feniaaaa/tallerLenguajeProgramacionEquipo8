@@ -13,21 +13,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.demo.frontend.equipo8.dto.UsuarioDTO;
+import com.example.demo.frontend.equipo8.dto.BoletaDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 @Service
-public class CrudServiceUsuarioImpl implements ICrudService {
+public class CrudServiceBoletaImpl implements ICrudService {
 
 	@Override
-	public List<UsuarioDTO> findAllREST() {
+	public List<BoletaDTO> findAllREST() {
 		try {
 			ObjectMapper unMapper = new ObjectMapper();
 
-			List<UsuarioDTO> usuarios = Arrays
-					.asList(unMapper.readValue(new URL("http://localhost:8080/usuario/REST"), UsuarioDTO[].class));
-			return usuarios;
+			List<BoletaDTO> boletas = Arrays
+					.asList(unMapper.readValue(new URL("http://localhost:8080/boleta/REST"), BoletaDTO[].class));
+			return boletas;
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -36,17 +36,17 @@ public class CrudServiceUsuarioImpl implements ICrudService {
 	}
 
 	@Override
-	public UsuarioDTO findByIdREST(int id) {
+	public BoletaDTO findByIdREST(int id) {
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 
 			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<UsuarioDTO> responseEntity = restTemplate
-					.getForEntity("http://localhost:8080/usuario/REST" + "/" + id, UsuarioDTO.class);
+			ResponseEntity<BoletaDTO> responseEntity = restTemplate
+					.getForEntity("http://localhost:8080/boleta/REST" + "/" + id, BoletaDTO.class);
 
 			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				UsuarioDTO dto = responseEntity.getBody();
+				BoletaDTO dto = responseEntity.getBody();
 				return dto;
 			} else {
 				System.out.println("A ocurrido un error");
@@ -59,19 +59,19 @@ public class CrudServiceUsuarioImpl implements ICrudService {
 	}
 
 	@Override
-	public UsuarioDTO saveREST(UsuarioDTO p) {
+	public BoletaDTO saveREST(BoletaDTO p) {
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 
-			HttpEntity<UsuarioDTO> requestEntity = new HttpEntity<>(p, headers);
+			HttpEntity<BoletaDTO> requestEntity = new HttpEntity<>(p, headers);
 
 			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<UsuarioDTO> responseEntity = restTemplate.postForEntity("http://localhost:8080/usuario/REST",
-					requestEntity, UsuarioDTO.class);
+			ResponseEntity<BoletaDTO> responseEntity = restTemplate.postForEntity("http://localhost:8080/boleta/REST",
+					requestEntity, BoletaDTO.class);
 
 			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				UsuarioDTO dto = responseEntity.getBody();
+				BoletaDTO dto = responseEntity.getBody();
 				return dto;
 			} else {
 				System.out.println("A ocurrido un error");
@@ -84,19 +84,19 @@ public class CrudServiceUsuarioImpl implements ICrudService {
 	}
 
 	@Override
-	public UsuarioDTO deleteREST(int id) {
+	public BoletaDTO deleteREST(int id) {
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 
 			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<UsuarioDTO> responseEntity = restTemplate
-					.getForEntity("http://localhost:8080/usuario/REST" + "/" + id, UsuarioDTO.class);
+			ResponseEntity<BoletaDTO> responseEntity = restTemplate
+					.getForEntity("http://localhost:8080/boleta/REST" + "/" + id, BoletaDTO.class);
 
 			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				UsuarioDTO dto = responseEntity.getBody();
+				BoletaDTO dto = responseEntity.getBody();
 
-				restTemplate.delete("http://localhost:8080/usuario/REST" + "/" + id);
+				restTemplate.delete("http://localhost:8080/boleta/REST" + "/" + id);
 
 				return dto;
 			} else {
@@ -108,6 +108,7 @@ public class CrudServiceUsuarioImpl implements ICrudService {
 			return null;
 		}
 	}
+
 	
 	
 

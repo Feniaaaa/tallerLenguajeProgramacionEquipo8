@@ -2,16 +2,17 @@ package com.example.demo.frontend.equipo8.service;
 
 import java.util.List;
 
-import com.example.demo.frontend.equipo8.dto.UsuarioDTO;
+import com.example.demo.frontend.equipo8.dto.BoletaDTO;
 
 public interface ICrudService {
 
-	public List<UsuarioDTO> findAllREST();
+	public List<BoletaDTO> findAllREST();
 
-	public UsuarioDTO findByIdREST(int id);
+	public BoletaDTO findByIdREST(int id);
 
-	public UsuarioDTO saveREST(UsuarioDTO usuario);
+	public BoletaDTO saveREST(BoletaDTO boleta);
 
-	public UsuarioDTO deleteREST(int id);
+	public BoletaDTO deleteREST(int id);
+	
 	
 }

@@ -17,15 +17,10 @@ public class PagoEntity  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "pago_boleta")
-    BoletaEntity boleta;
-    
 
-    public PagoEntity(@JsonProperty("id") int id,@JsonProperty("boleta") BoletaEntity boleta) {
+    public PagoEntity(@JsonProperty("id") int id) {
         super();
         this.id = id;
-        this.boleta = boleta;
 
     }
 

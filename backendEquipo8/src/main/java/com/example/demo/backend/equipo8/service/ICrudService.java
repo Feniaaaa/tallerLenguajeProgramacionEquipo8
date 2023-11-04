@@ -3,18 +3,18 @@ package com.example.demo.backend.equipo8.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.backend.equipo8.dto.UsuarioDTO;
+import com.example.demo.backend.equipo8.dto.BoletaDTO;
 
 
 public interface ICrudService {
 	
-	public List<UsuarioDTO> findAll();
+	public List<BoletaDTO> findAll();
 
-	public Optional<UsuarioDTO> findById(int id);
+	public Optional<BoletaDTO> findById(int id);
 
-	public UsuarioDTO save(UsuarioDTO dto);
+	public BoletaDTO save(BoletaDTO dto);
 
-	public void delete(UsuarioDTO dto);
+	public void delete(BoletaDTO dto);
 	
 
 }

@@ -1,10 +1,11 @@
 package com.example.demo.backend.equipo8.dto;
 
-import java.sql.Date;
+
 
 import javax.validation.constraints.NotBlank;
 
 import com.example.demo.backend.equipo8.entity.BoletaEntity;
+import com.example.demo.backend.equipo8.entity.TipoDeBoletaEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,25 +15,26 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BoletaDTO {
+public class BoletaDTO{
 	private int id;
 
 	@NotBlank
-	private int monto;
+	private String monto;
 
 	@NotBlank
-	private Date fecha;
+	private String fecha;
 	
 	@NotBlank
-	private String metodo_pago;
+	private String tipoboleta_id;
 	
-
+	
 	public BoletaEntity toEntity() {
 		BoletaEntity e = new BoletaEntity();
+		TipoDeBoletaEntity t = new TipoDeBoletaEntity();
 		e.setId(this.getId());
 		e.setMonto(this.getMonto());
 		e.setFecha(this.getFecha());
-		e.setMetodo_pago(this.getMetodo_pago());
+		t.setTipoboleta(this.getTipoboleta_id());
 		return e;
 	}
 }
