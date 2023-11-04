@@ -1,7 +1,5 @@
 package com.example.demo.backend.equipo8.dto;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 import com.example.demo.backend.equipo8.entity.LocalidadEntity;
