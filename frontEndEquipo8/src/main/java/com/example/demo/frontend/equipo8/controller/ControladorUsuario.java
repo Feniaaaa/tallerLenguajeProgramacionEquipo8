@@ -13,7 +13,7 @@ import com.example.demo.frontend.equipo8.dto.UsuarioDTO;
 @RequestMapping("usuario")
 public class ControladorUsuario {
 	
-	//http://localhost:8081/boleta/login
+	//http://localhost:8081/usuario/login
 	@GetMapping("/login")
 	public String login(Model model) {	
 		UsuarioDTO usuario= new UsuarioDTO();
@@ -21,6 +21,7 @@ public class ControladorUsuario {
 		return "usuario/login";
 	}
 	
+	//http://localhost:8081/usuario/login/homepage
 	@PostMapping("login/homepage")
 	public String procesarInicioSesion(@RequestParam("login") String login, @RequestParam("clave") String clave, Model model) {
 	    if (login.equals("Empleado1") && clave.equals("1234"))  {

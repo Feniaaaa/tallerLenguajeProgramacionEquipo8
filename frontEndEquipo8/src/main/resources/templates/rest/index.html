@@ -4,6 +4,37 @@
     <meta charset="UTF-8">
     <title>Mantenedor Boleta API REST</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('https://www.pixelstalk.net/wp-content/uploads/images6/Minimal-HD-Wallpaper-Free-download.jpg'); /* Reemplaza la URL con la de tu imagen de fondo */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+        .container {
+            background-color: #fff; /* Fondo blanco sólido */
+            padding: 20px;
+            border: 2px solid #333; /* Borde sólido de color gris oscuro (#333) */
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .volver-button {
+            text-align: center;
+            margin-top: 20px; /* Agrega espacio entre el panel y el botón */
+        }
+        .volver-button .btn {
+            font-size: 20px; /* Aumenta el tamaño del texto del botón */
+        }
+        .copyright {
+            font-size: 1rem;
+            text-align: right;
+            position: absolute;
+            color: #fff; /* Texto blanco en el botón */
+            bottom: 10px;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="container mt-4">
@@ -28,11 +59,17 @@
                 <td th:text="${boleta.tipoboleta_id}">${boleta.tipoboleta_id}</td>
                 <td>
                     <a class="btn btn-warning" th:href="@{/boleta/editar/REST/}+${boleta.id}" >Editar</a>
-                    <a class="btn btn-danger"  th:onclick="fxJSeliminar([[${boleta.id}]])">Eliminar</a>
+                    <a class="btn btn-danger" th:onclick="fxJSeliminar([[${boleta.id}]])">Eliminar</a>
                 </td>
             </tr>
         </tbody>
     </table>
+</div>
+<div class="volver-button">
+    <a href="javascript:history.go(-1);" class="btn btn-secondary btn-lg  btn-dark">Volver</a>
+</div>
+<div class="copyright">
+    &copy; 2023 Equipo8. Todos los derechos reservados.
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
