@@ -18,35 +18,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-import com.example.demo.backend.equipo8.dto.UsuarioDTO;
+import com.example.demo.backend.equipo8.dto.ProveedorDTO;
 import com.example.demo.backend.equipo8.service.ICrudService;
 
 @Controller
-@RequestMapping("usuario")
-public class ControladorUsuario {
+@RequestMapping("proveedor")
+public class ControladorProveedor {
 
 	@Autowired
 	private ICrudService servicio;
 	
 	@ResponseBody
 	@PostMapping("REST")
-	public UsuarioDTO agregarUsuario(@Valid @NonNull @RequestBody UsuarioDTO dto) {
+	public ProveedorDTO agregarProveedor(@Valid @NonNull @RequestBody ProveedorDTO dto) {
 		return servicio.save(dto);
 	}
 	
 	
 	@ResponseBody
 	@GetMapping("REST")
-	public List<UsuarioDTO> getAllUsuarios() {
+	public List<ProveedorDTO> getAllProveedores() {
 		return servicio.findAll();
 	}
 
 	@ResponseBody
 	@GetMapping("REST/{id}")
-	public UsuarioDTO getUsuarioById(@PathVariable("id") int id) {
-		Optional<UsuarioDTO> oDto = servicio.findById(id);
+	public ProveedorDTO getProveedorById(@PathVariable("id") int id) {
+		Optional<ProveedorDTO> oDto = servicio.findById(id);
 		if (oDto.isPresent()) {
-			UsuarioDTO dto = oDto.get();
+			ProveedorDTO dto = oDto.get();
 			return dto;
 		} else {
 			return null;
@@ -55,8 +55,8 @@ public class ControladorUsuario {
 
 	@ResponseBody
 	@PutMapping(("REST"))
-	public UsuarioDTO updateUsuario(@Valid @NonNull @RequestBody UsuarioDTO dto) {
-		Optional<UsuarioDTO> oDto = servicio.findById(dto.getId());
+	public ProveedorDTO updateProveedor(@Valid @NonNull @RequestBody ProveedorDTO dto) {
+		Optional<ProveedorDTO> oDto = servicio.findById(dto.getId());
 		if (oDto.isPresent() == true) {
 			return servicio.save(dto);
 		} else
@@ -65,8 +65,8 @@ public class ControladorUsuario {
 
 	@ResponseBody
 	@DeleteMapping("REST/{id}")
-	public boolean deleteUsuarioById(@PathVariable("id") int id) {
-		Optional<UsuarioDTO> oDto = servicio.findById(id);
+	public boolean deleteProveedoroById(@PathVariable("id") int id) {
+		Optional<ProveedorDTO> oDto = servicio.findById(id);
 		if (oDto.isPresent() == true) {
 			servicio.delete(oDto.get());
 			return true;

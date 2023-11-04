@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-import com.example.demo.frontend.equipo8.dto.UsuarioDTO;
+import com.example.demo.frontend.equipo8.dto.ProveedorDTO;
 import com.example.demo.frontend.equipo8.service.ICrudService;
 
 
@@ -26,76 +26,76 @@ import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
 
 
 @Controller
-@RequestMapping("usuario")
-public class ControladorUsuario {
+@RequestMapping("proveedor")
+public class ControladorProveedor {
 
 	@Autowired
 	private ICrudService servicio;
 	
 	
-	//http://localhost:8081/usuario/login
+	//http://localhost:8081/proveedor/login
 	@GetMapping("/login")
 	public String login(Model model) {	
-		UsuarioDTO usuario= new UsuarioDTO();
-		model.addAttribute("usuario",usuario);
+		ProveedorDTO proveedor= new ProveedorDTO();
+		model.addAttribute("proveedor",proveedor);
 		return "login";
 	}
 	
 	//http://localhost:8081/homepage
 	@PostMapping("login/homepage")
-	public String loginUsuario(@ModelAttribute("usuario") UsuarioDTO usuario) {
+	public String loginProveedor(@ModelAttribute("proveedor") ProveedorDTO proveedor) {
 		return "home";
 	}
 	
 
 	
-	//http://localhost:8081/usuario/login/homepage
+	//http://localhost:8081/proveedor/login/homepage
 	//@PostMapping("/homepage") 
-	//public String loginUsuario(@ModelAttribute("usuario") UsuarioEntity usuario) {
-		//	String UsuarioId=usuario.getLogin();
-			//java.util.Optional<UsuarioEntity> usuariodata= repo.findById(UsuarioId);
-			//if(usuario.getContrasena().equals(usuariodata.get().getContrasena())) {
+	//public String loginProveedor(@ModelAttribute("proveedor") ProveedorEntity proveedor) {
+		//	String ProveedorId=proveedor.getLogin();
+			//java.util.Optional<ProveedorEntity> proveedordata= repo.findById(ProveedorId);
+			//if(proveedor.getContrasena().equals(proveedordata.get().getContrasena())) {
 			//	return "home";
 			//}else {
 			//	return "home";
 			//}
 		//}
 		
-	// http://localhost:8081/usuario/listar/REST
+	// http://localhost:8081/proveedor/listar/REST
 	@GetMapping("listar/REST")
 	public String listarREST(Model model) {
-		List<UsuarioDTO> usuarios = servicio.findAllREST();
-		model.addAttribute("usuarios", usuarios);
+		List<ProveedorDTO> proveedores = servicio.findAllREST();
+		model.addAttribute("proveedores", proveedores);
 		return "rest/index";
 	}
 
-	// http://localhost:8081/usuario/listar/nuevo/REST
+	// http://localhost:8081/proveedor/listar/nuevo/REST
 	@GetMapping("listar/nuevo/REST")
 	public String agregarREST(Model model) {
-		model.addAttribute("usuario", new UsuarioDTO());
+		model.addAttribute("proveedor", new ProveedorDTO());
 		return "rest/form";
 	}
 
-	// http://localhost:8081/usuario/REST/id
+	// http://localhost:8081/proveedor/REST/id
 	@GetMapping("editar/REST/{id}")
 	public String editarREST(@PathVariable int id, Model model) {
-		UsuarioDTO usuario = servicio.findByIdREST(id);
-		model.addAttribute("usuario", usuario);
+		ProveedorDTO proveedor = servicio.findByIdREST(id);
+		model.addAttribute("proveedor", proveedor);
 		return "rest/form";
 	}
 
-	// http://localhost:8081/usuario/grabar/REST
+	// http://localhost:8081/proveedor/grabar/REST
 	@PostMapping("grabar/REST")
-	public String saveREST(@Valid UsuarioDTO p, Model model) {
+	public String saveREST(@Valid ProveedorDTO p, Model model) {
 		servicio.saveREST(p);
-		return "redirect:/usuario/listar/REST";
+		return "redirect:/proveedor/listar/REST";
 	}
 
-	// http://localhost:8081/usuario/eliminar/id
+	// http://localhost:8081/proveedor/eliminar/id
 	@GetMapping("eliminar/REST/{id}")
 	public String deleteREST(@PathVariable int id, Model model) {
 		servicio.deleteREST(id);
-		return "redirect:/usuario/listar/REST";
+		return "redirect:/proveedor/listar/REST";
 	}
 	
 	

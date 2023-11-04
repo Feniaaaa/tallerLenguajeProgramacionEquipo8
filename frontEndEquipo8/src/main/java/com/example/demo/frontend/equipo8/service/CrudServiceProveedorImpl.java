@@ -13,21 +13,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.demo.frontend.equipo8.dto.UsuarioDTO;
+import com.example.demo.frontend.equipo8.dto.ProveedorDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 @Service
-public class CrudServiceUsuarioImpl implements ICrudService {
+public class CrudServiceProveedorImpl implements ICrudService {
 
 	@Override
-	public List<UsuarioDTO> findAllREST() {
+	public List<ProveedorDTO> findAllREST() {
 		try {
 			ObjectMapper unMapper = new ObjectMapper();
 
-			List<UsuarioDTO> usuarios = Arrays
-					.asList(unMapper.readValue(new URL("http://localhost:8080/usuario/REST"), UsuarioDTO[].class));
-			return usuarios;
+			List<ProveedorDTO> proveedores = Arrays
+					.asList(unMapper.readValue(new URL("http://localhost:8080/proveedor/REST"), ProveedorDTO[].class));
+			return proveedores;
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -36,17 +36,17 @@ public class CrudServiceUsuarioImpl implements ICrudService {
 	}
 
 	@Override
-	public UsuarioDTO findByIdREST(int id) {
+	public ProveedorDTO findByIdREST(int id) {
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 
 			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<UsuarioDTO> responseEntity = restTemplate
-					.getForEntity("http://localhost:8080/usuario/REST" + "/" + id, UsuarioDTO.class);
+			ResponseEntity<ProveedorDTO> responseEntity = restTemplate
+					.getForEntity("http://localhost:8080/proveedor/REST" + "/" + id, ProveedorDTO.class);
 
 			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				UsuarioDTO dto = responseEntity.getBody();
+				ProveedorDTO dto = responseEntity.getBody();
 				return dto;
 			} else {
 				System.out.println("A ocurrido un error");
@@ -59,19 +59,19 @@ public class CrudServiceUsuarioImpl implements ICrudService {
 	}
 
 	@Override
-	public UsuarioDTO saveREST(UsuarioDTO p) {
+	public ProveedorDTO saveREST(ProveedorDTO p) {
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 
-			HttpEntity<UsuarioDTO> requestEntity = new HttpEntity<>(p, headers);
+			HttpEntity<ProveedorDTO> requestEntity = new HttpEntity<>(p, headers);
 
 			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<UsuarioDTO> responseEntity = restTemplate.postForEntity("http://localhost:8080/usuario/REST",
-					requestEntity, UsuarioDTO.class);
+			ResponseEntity<ProveedorDTO> responseEntity = restTemplate.postForEntity("http://localhost:8080/proveedor/REST",
+					requestEntity, ProveedorDTO.class);
 
 			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				UsuarioDTO dto = responseEntity.getBody();
+				ProveedorDTO dto = responseEntity.getBody();
 				return dto;
 			} else {
 				System.out.println("A ocurrido un error");
@@ -84,19 +84,19 @@ public class CrudServiceUsuarioImpl implements ICrudService {
 	}
 
 	@Override
-	public UsuarioDTO deleteREST(int id) {
+	public ProveedorDTO deleteREST(int id) {
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 
 			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<UsuarioDTO> responseEntity = restTemplate
-					.getForEntity("http://localhost:8080/usuario/REST" + "/" + id, UsuarioDTO.class);
+			ResponseEntity<ProveedorDTO> responseEntity = restTemplate
+					.getForEntity("http://localhost:8080/proveedor/REST" + "/" + id, ProveedorDTO.class);
 
 			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				UsuarioDTO dto = responseEntity.getBody();
+				ProveedorDTO dto = responseEntity.getBody();
 
-				restTemplate.delete("http://localhost:8080/usuario/REST" + "/" + id);
+				restTemplate.delete("http://localhost:8080/proveedor/REST" + "/" + id);
 
 				return dto;
 			} else {

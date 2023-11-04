@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsuarioDTO {
+public class ProveedorDTO {
 	private int id;
 
 	@NotBlank
@@ -19,9 +19,13 @@ public class UsuarioDTO {
 	private String apellido;
 	
 	@NotBlank
-	private String login;
+	private String nombre_compania;
 	
 	@NotBlank
-	private String contrasena;
-
+	private String telefono;
+	
+	@NotBlank
+	private String ciudad;
+	
+	
 }

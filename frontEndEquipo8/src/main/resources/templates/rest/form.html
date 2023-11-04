@@ -8,10 +8,10 @@
 <body>
 <div class="container mt-4">
     <div class="col-sm-6">
-        <form th:action="@{/usuario/grabar/REST}" th:object=${usuario} method="POST">
+        <form th:action="@{/proveedor/grabar/REST}" th:object=${proveedor} method="POST">
             <div class="card">
                 <div class="card-header"></div>
-                <h3>Usuario</h3>
+                <h3>Proveedor</h3>
                 <div class="card-body"></div>
                     <div class="form-group">
                         <label>ID</label>
@@ -29,15 +29,23 @@
                     </div>
                     
                     <div class="form-group">
-                        <label>LOGIN</label>
-                        <input th:field="*{login}" type="text" class="form-control"/>
+                        <label>NOMBRE_COMPANIA</label>
+                        <input th:field="*{nombre_compania}" type="text" class="form-control"/>
                     </div>
                     
                     <div class="form-group">
-                        <label>CONTRASEÑA</label>
-                        <input th:field="*{contrasena}" type="password" class="form-control"/>
+                        <label>TELEFONO</label>
+                        <input th:field="*{telefono}" type="text" class="form-control"/>
                     </div>
                     
+                   <div class="form-group">
+                        <label>CIUDAD</label>
+                        <select class="form-control" id="ciudad" name="ciudad"/>
+                        <option value="1" >Concepcion</option>
+                        <option value="2" >San pedro de la paz</option> 
+                        <option value="3" >Talcahuano</option> 
+                        <option value="4" >Chiguayante</option> 
+                    </div>
                 <div class="card-footer">
                     <input type="submit" value="Guardar" class="btn btn-success">
                 </div>

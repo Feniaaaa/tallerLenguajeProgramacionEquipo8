@@ -9,7 +9,7 @@ function fxJSeliminar(id) {
     .then((OK) => {
         if (OK) {
             $.ajax({
-                url: "/usuario/eliminar/REST/"+id,
+                url: "/proveedor/eliminar/REST/"+id,
                 success:function (res) {
                     console.log(res);
                 },
@@ -18,7 +18,7 @@ function fxJSeliminar(id) {
                 icon: "success",
             }).then((ok) => {
                 if (ok){
-                    location.href = "/usuario/listar/REST";
+                    location.href = "/proveedor/listar/REST";
                 }
             });
         } else {
