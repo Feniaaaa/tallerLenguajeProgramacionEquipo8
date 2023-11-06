@@ -1,4 +1,4 @@
-function fxJSeliminar(id) {
+function fxJSeliminar2(id) {
     swal({
         title: "¿Esta seguro de eliminar?",
         text: "Una vez eliminado, no se podra deshacer esta acción!",

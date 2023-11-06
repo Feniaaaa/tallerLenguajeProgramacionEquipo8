@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class TipoDeBoletaDTO {
 	private int id;
 
-    @NotBlank
+    
     @Column(name = "tipoboleta")
     private String tipoboleta;
     

@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 @Data
@@ -23,13 +24,11 @@ public class TipoDeBoletaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank
+    
     @Column(name = "tipoboleta")
     private String tipoboleta;
     
     
-
-
     public TipoDeBoletaEntity(@JsonProperty("id") int id,@JsonProperty("tipoboleta") String tipoboleta) {
         super();
         this.id = id;

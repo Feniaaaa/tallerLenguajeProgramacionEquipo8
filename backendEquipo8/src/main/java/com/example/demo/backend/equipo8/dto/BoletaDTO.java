@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 
 import com.example.demo.backend.equipo8.entity.BoletaEntity;
 import com.example.demo.backend.equipo8.entity.TipoDeBoletaEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,17 +25,16 @@ public class BoletaDTO{
 	@NotBlank
 	private String fecha;
 	
-	@NotBlank
-	private String tipoboleta_id;
+	@JsonIgnore
+	private TipoDeBoletaEntity tipoboleta;
 	
 	
 	public BoletaEntity toEntity() {
 		BoletaEntity e = new BoletaEntity();
-		TipoDeBoletaEntity t = new TipoDeBoletaEntity();
 		e.setId(this.getId());
 		e.setMonto(this.getMonto());
 		e.setFecha(this.getFecha());
-		t.setTipoboleta(this.getTipoboleta_id());
+		e.setTipoboleta(this.getTipoboleta());
 		return e;
 	}
 }

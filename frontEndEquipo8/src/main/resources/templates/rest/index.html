@@ -56,7 +56,7 @@
                 <td th:text="${boleta.id}">${boleta.id}</td>
                 <td th:text="${boleta.monto}">${boleta.monto}</td>
                 <td th:text="${boleta.fecha}">${boleta.fecha}</td>
-                <td th:text="${boleta.tipoboleta_id}">${boleta.tipoboleta_id}</td>
+                <td th:text="${boleta.tipoboleta}">${boleta.tipoboleta}</td>
                 <td>
                     <a class="btn btn-warning" th:href="@{/boleta/editar/REST/}+${boleta.id}" >Editar</a>
                     <a class="btn btn-danger" th:onclick="fxJSeliminar([[${boleta.id}]])">Eliminar</a>
@@ -66,7 +66,7 @@
     </table>
 </div>
 <div class="volver-button">
-    <a href="javascript:history.go(-1);" class="btn btn-secondary btn-lg  btn-dark">Volver</a>
+    <a href="http://localhost:8081/cruds/" class="btn btn-secondary btn-lg  btn-dark">Volver</a>
 </div>
 <div class="copyright">
     &copy; 2023 Equipo8. Todos los derechos reservados.

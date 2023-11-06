@@ -28,8 +28,8 @@ public class BoletaEntity {
     @Column(name = "fecha")
     private String fecha;
     
-    @OneToOne
-    @JoinColumn(name="tipodeboleta_id")
+    @ManyToOne
+    @JoinColumn(name="tipoboleta_id")
     private TipoDeBoletaEntity tipoboleta;
 
 

@@ -60,12 +60,7 @@ public class ControladorBoleta {
 	}
 	*/ 
 	@PostMapping("grabar/REST")
-	public String saveREST(@Valid BoletaDTO p, @RequestParam("tipoboleta_id") String tipoboleta_id, Model model) {
-	if (tipoboleta_id == "1") {
-		p.setTipoboleta_id("Factura");
-	} else if (tipoboleta_id == "2") {
-		p.setTipoboleta_id("Boleta");
-	}
+	public String saveREST(@Valid BoletaDTO p, Model model) {
     servicio.saveREST(p);
     return "redirect:/boleta/listar/REST";
 }
