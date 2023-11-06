@@ -7,7 +7,7 @@ import com.example.demo.backend.equipo8.dto.BoletaDTO;
 
 
 public interface ICrudService {
-	
+
 	public List<BoletaDTO> findAll();
 
 	public Optional<BoletaDTO> findById(int id);
@@ -16,5 +16,4 @@ public interface ICrudService {
 
 	public void delete(BoletaDTO dto);
 	
-
 }

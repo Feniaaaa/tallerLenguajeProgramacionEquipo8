@@ -26,21 +26,19 @@ public class ProveedorDTO {
 	@NotBlank
 	private String telefono;
 	
-	@NotBlank
-	private String ciudad;
+	
+	private LocalidadEntity localidad;
 	
 	
 	
 	public ProveedorEntity toEntity() {
 		ProveedorEntity e = new ProveedorEntity();
-		LocalidadEntity l = new LocalidadEntity();
 		e.setId(this.getId());
 		e.setNombre(this.getNombre());
 		e.setApellido(this.getApellido());
 		e.setNombre_compania(this.getNombre_compania());
 		e.setTelefono(this.getTelefono());
-		l.setCiudad(this.getCiudad());
-		l.setId(this.getId());
+		e.setLocalidad(this.getLocalidad());
 		return e;
 	}
 }

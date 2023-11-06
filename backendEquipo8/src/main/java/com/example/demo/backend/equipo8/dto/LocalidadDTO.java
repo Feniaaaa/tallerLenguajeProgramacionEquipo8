@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class LocalidadDTO {
 	private int id;
 
-	@NotBlank
+	
 	private String ciudad;
 
 	

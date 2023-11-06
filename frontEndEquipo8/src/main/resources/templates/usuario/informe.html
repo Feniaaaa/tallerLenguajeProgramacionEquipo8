@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Resumen de Ventas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://static.vecteezy.com/system/resources/previews/030/658/318/non_2x/downtempo-chillout-minimalist-desktop-wallpaper-free-photo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+        }
+
+        section {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 0 20px;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 0 0 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        footer {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .popup input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .popup .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .popup .button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Resumen de Ventas del Último Mes</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Dinero Recaudado</h2>
+            <p>$ 65,321,480</p>
+        </section>
+        <section>
+            <h2>Recuento de Horas</h2>
+            <p>1,200 Hrs</p>
+        </section>
+    </main>
+    <div class="button-container">
+        <a href="#" class="button" id="generar-informe-button">Generar Informe</a>
+        <a href="http://localhost:8081/usuario/login/homepage" class="button">Volver</a>
+    </div>
+
+    <!-- Pop-up para ingresar la contraseña -->
+    <div class="overlay" id="popup">
+        <div class="popup">
+            <h2>Ingrese la contraseña</h2>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" required>
+            <div class="button-container">
+                <a href="#" class="button" id="confirmar-button">Confirmar</a>
+                <a href="#" class="button" id="cancelar-button">Cancelar</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar el pop-up al hacer clic en "Generar Informe"
+        const generarInformeButton = document.getElementById("generar-informe-button");
+        const popup = document.getElementById("popup");
+
+        generarInformeButton.addEventListener("click", () => {
+            popup.style.display = "flex";
+        });
+
+        // Confirmar o cancelar el pop-up
+        const confirmarButton = document.getElementById("confirmar-button");
+        const cancelarButton = document.getElementById("cancelar-button");
+        const passwordInput = document.getElementById("password");
+
+        confirmarButton.addEventListener("click", () => {
+            // Agregar la lógica para validar la contraseña aquí
+            const password = passwordInput.value;
+            if (password === "1234") {
+                // Contraseña válida, realizar la acción
+                console.log("Contraseña correcta. Generando informe...");
+                // Puedes agregar aquí la lógica para generar el informe
+                // Por ahora, simplemente cerramos el pop-up
+                popup.style.display = "none";
+            } else {
+                // Contraseña incorrecta, mostrar mensaje de error
+                alert("Contraseña incorrecta. Inténtalo de nuevo.");
+            }
+        });
+
+        cancelarButton.addEventListener("click", () => {
+            // Cerrar el pop-up en caso de cancelación
+            popup.style.display = "none";
+        });
+    </script>
+</body>
+</html>
+

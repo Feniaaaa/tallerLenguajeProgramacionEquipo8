@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -41,9 +42,9 @@ public class ProveedorEntity {
 	@Column(name = "telefono")
 	private String telefono;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "proveedor_localidad")
-	LocalidadEntity localidad;
+	private LocalidadEntity localidad;
 
 
 	public ProveedorEntity(@JsonProperty("id") int id, @JsonProperty("nombre") String nombre,

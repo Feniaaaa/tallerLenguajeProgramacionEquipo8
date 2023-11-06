@@ -19,7 +19,7 @@ public class LocalidadEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank
+    
     @Column(name = "ciudad")
     private String ciudad;
     
@@ -39,3 +39,4 @@ public class LocalidadEntity {
 		return dto;
 	}
 }
+

@@ -32,7 +32,6 @@ public class ControladorUsuario {
 	    }
 
 	}
-	
 	//http://localhost:8081/usuario/login/homepage/registroVenta
 	@GetMapping("login/homepage/registroVenta")
 	public String registroVenta(Model model) {	
@@ -56,4 +55,16 @@ public class ControladorUsuario {
 	public String pagar(Model model) {	
 		return "usuario/pagar";
 	}
+	//http://localhost:8081/usuario/login/homepage/informe
+	@GetMapping("login/homepage/informe")
+	public String informe(Model model) {	
+		return "usuario/informe";
+	}
+	
+	//http://localhost:8081/usuario/login/homepage/cerrar
+	@GetMapping("login/homepage/cerrar")
+	public String cerrar(Model model) {	
+		return "usuario/cerrar";
+	}
+	
 }

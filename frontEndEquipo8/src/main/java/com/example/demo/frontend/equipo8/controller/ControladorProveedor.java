@@ -1,7 +1,5 @@
 package com.example.demo.frontend.equipo8.controller;
-
 import java.util.List;
-
 
 import javax.validation.Valid;
 
