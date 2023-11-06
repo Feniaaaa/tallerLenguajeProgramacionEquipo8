@@ -32,4 +32,28 @@ public class ControladorUsuario {
 	    }
 
 	}
+	
+	//http://localhost:8081/usuario/login/homepage/registroVenta
+	@GetMapping("login/homepage/registroVenta")
+	public String registroVenta(Model model) {	
+		return "usuario/registroventa";
+	}
+	
+	//http://localhost:8081/usuario/login/homepage/registroInventario
+	@GetMapping("login/homepage/registroInventario")
+	public String registroInventario(Model model) {	
+		return "usuario/registroinventario";
+	}
+	
+	//http://localhost:8081/usuario/login/homepage
+	@GetMapping("login/homepage")
+	public String volerHomepage(Model model) {	
+		return "usuario/home";
+	}
+	
+	//http://localhost:8081/usuario/login/homepage/registroVenta/pagar
+	@GetMapping("login/homepage/registroVenta/pagar")
+	public String pagar(Model model) {	
+		return "usuario/pagar";
+	}
 }

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compra</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210903/pngtree-summer-cold-drink-ice-cream-promotion-hd-background-image_791849.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .scrollable-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* Estilos para centrar los títulos y cambiar el color del texto a blanco */
+        .centered-title {
+            text-align: center;
+            color: white;
+         
+        }
+
+        /* Cambiar el color del texto dentro del contenedor "Carrito de Compra" a negro */
+        .carrito-content {
+            color: black;
+        }
+
+        /* Estilo para la tabla dentro del contenedor "Carrito de Compra" */
+        .carrito-table {
+            background-color: white;
+            color: black;
+        }
+
+        /* Cambiar el color del texto dentro del contenedor "Menú de Helados" a negro */
+        .menu-content {
+            color: black;
+        }
+
+        /* Cambiar el color del texto de "Total" e "IVA" a blanco */
+        .total {
+            color: rgb(0, 0, 0);
+        }
+
+        .iva {
+            color: rgb(0, 0, 0);
+        }
+
+        /* Estilos para los encabezados de tabla */
+        .table th {
+            background-color: #343a40; /* Color de fondo gris oscuro */
+            color: white; /* Texto blanco */
+        }
+
+        /* Estilos para las filas impares en la tabla */
+        .table tbody tr:nth-child(odd) {
+            background-color: #f8f9fa; /* Color de fondo gris claro */
+        }
+
+        /* Estilos para el título "Registro de Venta" */
+        .title-container {
+            background: rgba(0, 0, 0, 0.7); /* Fondo transparente */
+            text-align: center;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 36px; /* Tamaño de fuente más grande */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 title-container">
+                <h1 class="title">Registro de Venta</h1>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h3 class="centered-title">Menú de Helados</h3>
+                    </div>
+                    <div class="card-body menu-content">
+                        <ul class="list-group">
+                            <li class="list-group-item">Helado Frutilla - $2100</li>
+                            <li class="list-group-item">Helado Strawberries - $3100</li>
+                            <li class="list-group-item">Palo Frutilla - $1400</li>
+                            <li class="list-group-item">Helado Chocolate - $2300</li>
+                            <li class="list-group-item">Helado de Vainilla - $2000</li>
+                            <li class="list-group-item">Helado de Menta - $2200</li>
+                            <li class "list-group-item">Helado de Limón - $1900</li>
+                            <li class "list-group-item">Helado de Cookies n Cream - $2500</li>
+                            <li class="list-group-item">Helado de Fresa - $1800</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h3 class="centered-title">Carrito de Compra</h3>
+                    </div>
+                    <div class="card-body carrito-content">
+                        <table class="table carrito-table">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Helado Chocolate</td>
+                                    <td>$2300</td>
+                                    <td>1</td>
+                                    <td>$2300</td>
+                                </tr>
+                                <tr>
+                                    <td>Helado Frutilla</td>
+                                    <td>$2100</td>
+                                    <td>1</td>
+                                    <td>$2100</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-center">
+    						<h4 class="total" style="position: relative; z-index: 1">Total: $4400</h4>
+    						<h5 class="iva" style="position: relative; z-index: 1">IVA: $836</h5>
+                            <a href="http://localhost:8081/usuario/login/homepage/registroVenta/pagar" class="btn btn-primary">Pagar</a>
+                            <a href="http://localhost:8081/usuario/login/homepage" class="btn btn-secondary">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

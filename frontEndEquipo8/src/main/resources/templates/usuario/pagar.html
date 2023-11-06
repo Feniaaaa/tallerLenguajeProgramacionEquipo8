@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página en Mantenimiento</title>
+    <style>
+        body {
+            background-image: url('https://thumbs.dreamstime.com/b/el-trabajador-del-gato-sostiene-rodillo-y-pintura-obrero-beige-de-un-chaleco-con-casco-botas-cepillo-rodillos-una-lata-pl%C3%A1stico-193410470.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            margin: 0;
+        }
+
+        h1, p {
+            background-color: rgba(192, 192, 192, 0.5); /* Fondo más transparente */
+            padding: 20px; /* Espacio interno para el texto */
+            border-radius: 10px; /* Bordes redondeados */
+        }
+
+        h1 {
+            font-size: 60px;
+            color: rgb(255, 0, 0);
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-size: 38px;
+            color: rgb(255, 0, 0);
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        #go-back-button {
+            background-color: rgb(0, 128, 192);
+            color: white;
+            border: 2px solid black; /* Bordes negros */
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+
+        #go-back-button:hover {
+            background-color: rgba(255, 0, 0, 0.9); /* Cambia el color al pasar el cursor por encima */
+        }
+    </style>
+</head>
+<body>
+    <h1>¡Estamos en Mantenimiento!</h1>
+    <p>Lamentablemente, nuestra página web está temporalmente fuera de servicio por mantenimiento.</p>
+    <p>Volveremos pronto. ¡Gracias por tu paciencia!</p>
+    
+    <button id="go-back-button">Volver a la página anterior</button>
+
+    <script>
+        const goBackButton = document.getElementById('go-back-button');
+
+        goBackButton.addEventListener('click', () => {
+            window.history.back();
+        });
+    </script>
+</body>
+</html>

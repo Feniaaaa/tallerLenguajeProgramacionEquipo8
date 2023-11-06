@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Inventario</title>
+    <style>
+        body {
+            background-image: url('https://i.pinimg.com/originals/3b/5e/a0/3b5ea0ffb0584af4f73735e2193ef1e2.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            background-color: rgb(128, 128, 128);
+            color: white;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            font-size: 24px; /* Tamaño de fuente más grande */
+        }
+
+        /* Cambia el color del texto de las etiquetas label a negro */
+        label {
+            color: black;
+            font-size: 18px; /* Tamaño de fuente más grande */
+        }
+
+        input[type="text"], input[type="number"], input[type="date"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            color: black;
+            border: 1px solid #000;
+            border-radius: 5px;
+        }
+
+        /* Estilo para el contenedor de campos con fondo blanco y bordes curvos */
+        .field-container {
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        button {
+            background-color: rgb(0, 128, 192);
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: 20px auto 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 2px solid #000;
+        }
+
+        /* Agrega margen superior al segundo contenedor para crear un espacio */
+        .field-container:last-child {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #000;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        select {
+            font-size: 18px; /* Tamaño de fuente más grande */
+        }
+
+        #flavor { /* Estilo para el campo de sabor seleccionado */
+            background-color: #e0e0e0; /* Color de fondo gris claro */
+            font-size: 18px; /* Tamaño de fuente más grande */
+            padding: 10px;
+            border: 1px solid #000;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de Inventario</h1>
+        <form id="inventoryForm">
+            <!-- Contenedor con fondo blanco y bordes curvos para Sabor, Precio y Fecha de vencimiento -->
+            <div class="field-container">
+                <!-- Cambia el color del texto de las etiquetas label a negro -->
+                <label for="flavor">Sabor:</label>
+                <select id="flavor" name="flavor" required>
+                    <option value="" disabled selected>Seleccionar un sabor</option>
+                    <option value="helado1">Helado Frutilla - $2100</option>
+                    <option value="helado2">Helado Strawberries - $3100</option>
+                    <option value="helado3">Palo Frutilla - $1400</option>
+                    <option value="helado4">Helado Chocolate - $2300</option>
+                    <option value="helado5">Helado de Vainilla - $2000</option>
+                    <option value="helado6">Helado de Menta - $2200</option>
+                    <option value="helado7">Helado de Limón - $1900</option>
+                    <option value="helado8">Helado de Cookies y Crema - $2100</option>
+                    <option value="helado9">Helado de Fresa - $1800</option>
+                </select>
+                <label for="price">Precio:</label>
+                <input type="number" id="price" name="price" min="0" step="50" required>
+                <!-- Cambia la fecha de vencimiento a "12/11/2023" -->
+                <label for="expirationDate">Fecha de vencimiento:</label>
+                <input type="date" id="expirationDate" name="expirationDate" value="2023-11-12">
+            </div>
+            <!-- Agrega espacio arriba del botón -->
+            <button type="submit">Guardar</button>
+            <div id="confirmationMessage" style="display: none; color: green; text-align: center;">
+                Registro guardado con éxito.
+            </div>
+        </form>
+        <table id="inventoryTable">
+            <!-- Aquí se mostrará la tabla de inventario -->
+        </table>
+        <div style="text-align: center;">
+            <a href="http://localhost:8081/usuario/login/homepage" style="text-decoration: none; color: white;">
+                <button>Volver</button>
+            </a>
+        </div>
+    </div>
+<script>
+    document.getElementById("inventoryForm").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevenir el envío del formulario
+        showConfirmationMessage();
+    });
+
+    function showConfirmationMessage() {
+        var confirmationMessage = document.getElementById("confirmationMessage");
+        confirmationMessage.style.display = "block";
+    }
+</script>
+</body>
+</html>
+
