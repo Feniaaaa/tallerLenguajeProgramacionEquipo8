@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crud Home</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    >
+    <style>
+      body {
+        background-image: url('https://preview.redd.it/p9jtsvxck9j51.png?auto=webp&s=8f52326f9d6793e9058edac360ff7298dbc74fca');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90vh;
+        margin: 0;
+      }
+      .panel {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 2px solid #333;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 500px;
+      }
+      .container {
+        font-size: 24px;
+        text-align: center;
+      }
+      .btn-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .btn {
+        border: 2px solid #333;
+        margin: 10px;
+        padding: 10px 20px;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+      }
+      .btn-success {
+        background-color: #28a745;
+        color: #fff;
+      }
+      .copyright {
+        font-size: 1rem;
+        text-align: right;
+        color: #fff;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
+      .current-time {
+        font-size: 1rem;
+        text-align: left;
+        color: #fff;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-family: monospace; /* Usa una fuente monoespaciada para que parezca un reloj digital */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="current-time">
+      <span id="clock"></span>
+    </div>
+    <div class="panel">
+      <div class="container">
+        <h1 style="color: rgb(255, 128, 0);">Selecciona un Crud</h1>
+      </div>
+
+      <div class="btn-container">
+        <a href="http://localhost:8081/boleta/listar/REST" class="btn btn-primary btn-lg">Crud Boleta</a>
+        <a href="http://localhost:8081/proveedor/listar/REST" class="btn btn-success btn-lg">Crud Proveedor</a>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2023 Equipo8. Todos los derechos reservados.
+    </div>
+    <script>
+      function updateTime() {
+        const now = new Date();
+        const clockElement = document.getElementById('clock');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+      }
+
+      // Actualiza la hora cada segundo
+      setInterval(updateTime, 1000);
+
+      // Llama a updateTime para mostrar la hora inicial
+      updateTime();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

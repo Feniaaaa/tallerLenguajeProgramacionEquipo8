@@ -8,10 +8,10 @@
 <body>
 <div class="container mt-4">
     <div class="col-sm-6">
-        <form th:action="@{/proveedor/grabar/REST}" th:object=${proveedor} method="POST">
+        <form th:action="@{/boleta/grabar/REST}" th:object=${boleta} method="POST">
             <div class="card">
                 <div class="card-header"></div>
-                <h3>Proveedor</h3>
+                <h3>Boleta</h3>
                 <div class="card-body"></div>
                     <div class="form-group">
                         <label>ID</label>
@@ -19,33 +19,22 @@
                     </div>
 
                     <div class="form-group">
-                        <label>NOMBRE</label>
-                        <input th:field="*{nombre}" type="text" class="form-control"/>
+                        <label>MONTO</label>
+                        <input th:field="*{monto}" type="text" class="form-control"/>
                     </div>
                     
                     <div class="form-group">
-                        <label>APELLIDO</label>
-                        <input th:field="*{apellido}" type="text" class="form-control"/>
+                        <label>FECHA</label>
+                        <input th:field="*{fecha}" type="text" class="form-control"/>
                     </div>
                     
                     <div class="form-group">
-                        <label>NOMBRE_COMPANIA</label>
-                        <input th:field="*{nombre_compania}" type="text" class="form-control"/>
+                        <label>TIPO DE BOLETA</label>
+                        <select class="form-control" id="tipoboleta_id" name="tipoboleta_id"/>
+                    	<option value="1" >Factura</option>
+                        <option value="2" >Boleta</option> 
                     </div>
-                    
-                    <div class="form-group">
-                        <label>TELEFONO</label>
-                        <input th:field="*{telefono}" type="text" class="form-control"/>
-                    </div>
-                    
-                   <div class="form-group">
-                        <label>CIUDAD</label>
-                        <select class="form-control" id="ciudad" name="ciudad"/>
-                        <option value="1" >Concepcion</option>
-                        <option value="2" >San pedro de la paz</option> 
-                        <option value="3" >Talcahuano</option> 
-                        <option value="4" >Chiguayante</option> 
-                    </div>
+             
                 <div class="card-footer">
                     <input type="submit" value="Guardar" class="btn btn-success">
                 </div>

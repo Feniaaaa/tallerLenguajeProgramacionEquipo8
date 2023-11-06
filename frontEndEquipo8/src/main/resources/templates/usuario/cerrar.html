@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerrar Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9T11neNEoa7Rxnatzjc-dSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://static.vecteezy.com/system/resources/previews/030/658/311/non_2x/downtempo-chillout-minimalist-desktop-wallpaper-free-photo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333; /* Color de texto oscuro */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo del contenedor con transparencia */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+        }
+
+        .resumen {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .resumen h2 {
+            margin-bottom: 20px;
+        }
+
+        .resumen ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .resumen li {
+            margin-bottom: 10px;
+        }
+
+        .resumen span {
+            font-weight: bold;
+        }
+
+        .resumen .total {
+            font-size: 1.2rem;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+        .btn-cerrar-caja {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-cerrar-caja:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-menu-principal {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn-menu-principal:hover {
+            background-color: #545b62;
+        }
+
+        /* Estilos para el pop-up */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .popup .btn-confirmar {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .popup .btn-cancelar {
+            background-color: #6c757d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="resumen">
+            <h2>Resumen de ventas del día</h2>
+            <ul>
+                <li>Efectivo: $<span>375,000</span></li>
+                <li>Debito: $<span>130,000</span></li>
+                <li>Credito: $<span>225,000</span></li>
+                <li class="total">Total recaudado: $<span>730,000</span></li>
+            </ul>
+        </div>
+        <div class="btn-container">
+            <div class="btn-cerrar-caja" id="open-popup">Cerrar Caja</div>
+            <a class="btn btn-menu-principal" href="http://localhost:8081/usuario/login/homepage">Volver al Menú Principal</a>
+        </div>
+        <!-- Pop-up para ingresar la contraseña -->
+        <div class="popup-container" id="popup-container">
+            <div class="popup">
+                <h3>Confirmar Cierre de Caja</h3>
+                <input type="password" placeholder="Contraseña" id="password">
+                <button class="btn-confirmar"  id="confirmar-cierre">Confirmar</button>
+                <button class="btn-cancelar" id="cancelar-cierre">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const openPopupButton = document.getElementById("open-popup");
+        const popupContainer = document.getElementById("popup-container");
+        const confirmarButton = document.getElementById("confirmar-cierre");
+        const cancelarButton = document.getElementById("cancelar-cierre");
+        const passwordInput = document.getElementById("password");
+
+        openPopupButton.addEventListener("click", () => {
+            popupContainer.style.display = "flex";
+        });
+
+        confirmarButton.addEventListener("click", () => {
+            // Agregar la lógica para validar la contraseña aquí
+            const password = passwordInput.value;
+            if (password === "1234") {
+                // Contraseña válida, realizar la acción
+                console.log("Contraseña correcta.");
+                window.location.href = "http://localhost:8081/usuario/login";
+                // Puedes agregar aquí la lógica para generar el informe
+                // Por ahora, simplemente cerramos el pop-up
+                popup.style.display = "none";
+            } else {
+                // Contraseña incorrecta, mostrar mensaje de error
+                alert("Contraseña incorrecta. Inténtalo de nuevo.");
+            }
+        });
+
+        cancelarButton.addEventListener("click", () => {
+            // Cerrar el pop-up en caso de cancelación
+            popupContainer.style.display = "none";
+        });
+    </script>
+</body>
+</html>

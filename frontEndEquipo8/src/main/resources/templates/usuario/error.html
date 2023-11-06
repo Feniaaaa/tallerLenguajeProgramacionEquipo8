@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Error - Credenciales Incorrectas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-hWVjflwFx2U6XG5lD6P5K5F5vCK2P6z5aCN6jLw1vF04Je5aI33k5VVBBK2bRVp38" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('https://get.wallhere.com/photo/1920x1080-px-abandoned-alone-black-background-dark-empty-isolation-lamps-lights-lines-minimalism-night-parking-lot-path-photography-street-street-light-1340689.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 95vh;
+        }
+        .error-message {
+   			 background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con opacidad (ajusta el valor "0.7" para cambiar la opacidad) */
+    		padding: 20px;
+    		border-radius: 10px;
+    		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    		text-align: center;
+    		border: 5px solid #000;
+}
+        .error-message h1 {
+            font-size: 2rem;
+            color: red;
+        }
+        .error-message .btn {
+            border: 2px solid #000;
+            border-radius: 7px;
+            padding: 10px 20px;
+            background-color: rgb(0, 128, 192);
+            color: rgb(0, 0, 0);
+        }
+        .error-message .btn i {
+            margin-right: 5px;
+        }
+        .copyright {
+            font-size: 1rem;
+            text-align: right;
+            position: absolute;
+            color: #fff;
+            bottom: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-message col-5">
+            <h1>Error - Credenciales Incorrectas</h1>
+            <a class="btn btn-primary" href="http://localhost:8081/usuario/login">
+                <i class="fas fa-exclamation-triangle"></i> Volver al Login
+            </a>
+        </div>
+    </div>
+    <div class="copyright">
+        &copy; 2023 Equipo8. Todos los derechos reservados.
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
