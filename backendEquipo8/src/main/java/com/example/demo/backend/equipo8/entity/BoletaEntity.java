@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-
-
+	
+	
 @Data
 @NoArgsConstructor
 @Entity
@@ -19,7 +19,7 @@ public class BoletaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    
     @NotBlank
     @Column(name = "monto")
     private String monto;
@@ -31,8 +31,8 @@ public class BoletaEntity {
     @ManyToOne
     @JoinColumn(name="tipoboleta_id")
     private TipoDeBoletaEntity tipoboleta;
-
-
+    
+    
     public BoletaEntity(@JsonProperty("id") int id,@JsonProperty("monto") String monto, @JsonProperty("fecha") String fecha) {
         super();
         this.id = id;

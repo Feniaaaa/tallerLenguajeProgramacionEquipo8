@@ -1,5 +1,6 @@
-package com.example.demo.backend.equipo8.controller;
+ package com.example.demo.backend.equipo8.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,5 +76,6 @@ public class ControladorTipoDeBoleta {
 		}
 	}
 	
+
 
 }

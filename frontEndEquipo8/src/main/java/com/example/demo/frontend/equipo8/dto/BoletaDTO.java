@@ -4,6 +4,7 @@ package com.example.demo.frontend.equipo8.dto;
 import javax.validation.constraints.NotBlank;
 
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,5 +21,5 @@ public class BoletaDTO {
 	@NotBlank
 	private String fecha;	
 	
-	private int tipoboleta;
+	private TipoDeBoletaDTO tipoboleta;
 }

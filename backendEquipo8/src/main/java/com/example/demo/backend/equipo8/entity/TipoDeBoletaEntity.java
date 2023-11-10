@@ -8,7 +8,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -24,21 +25,21 @@ public class TipoDeBoletaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "nombre")
+    private String nombre;
     
-    @Column(name = "tipoboleta")
-    private String tipoboleta;
     
-    
-    public TipoDeBoletaEntity(@JsonProperty("id") int id,@JsonProperty("tipoboleta") String tipoboleta) {
+    public TipoDeBoletaEntity(@JsonProperty("id") int id,@JsonProperty("nombre") String nombre) {
         super();
         this.id = id;
-        this.tipoboleta = tipoboleta;
+        this.nombre = nombre;
     }
     
 	public TipoDeBoletaDTO toDTO() {
 		TipoDeBoletaDTO dto = new TipoDeBoletaDTO();
 		dto.setId(this.getId());
-		dto.setTipoboleta(this.getTipoboleta());
+		dto.setNombre(this.getNombre());
 		return dto;
 	}
+	
 }

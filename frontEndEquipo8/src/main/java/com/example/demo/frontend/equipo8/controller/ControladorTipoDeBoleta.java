@@ -1,7 +1,7 @@
 package com.example.demo.frontend.equipo8.controller;
 
-import java.util.List;
 
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -12,63 +12,54 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.example.demo.frontend.equipo8.dto.BoletaDTO;
+
 import com.example.demo.frontend.equipo8.dto.TipoDeBoletaDTO;
-import com.example.demo.frontend.equipo8.service.ICrudService;
 import com.example.demo.frontend.equipo8.service.ICrudServiceTB;
 
 
-
-
 @Controller
-@RequestMapping("boleta")
-public class ControladorBoleta {
+@RequestMapping("tipoboleta")
+public class ControladorTipoDeBoleta {
 
 	@Autowired
-	private ICrudService servicio;
+	private ICrudServiceTB servicio;
 	
-	@Autowired
-	private ICrudServiceTB servicio2;
-	
-	//http://localhost:8081/boleta/listar/REST
+	//http://localhost:8081/tipoboleta/listar/REST
 	@GetMapping("listar/REST")
 	public String listarREST(Model model) {
-	    List<BoletaDTO> boletas = servicio.findAllREST();
-	    model.addAttribute("boletas", boletas);
-	    List<TipoDeBoletaDTO> tipoboletas = servicio2.findAllREST();
+	    List<TipoDeBoletaDTO> tipoboletas = servicio.findAllREST();
         model.addAttribute("tipoboletas", tipoboletas);
 	    return "rest/index";
 	}
 
-	// http://localhost:8081/boleta/listar/nuevo/REST
+	// http://localhost:8081/tipoboleta/listar/nuevo/REST
 	@GetMapping("listar/nuevo/REST")
 	public String agregarREST(Model model) {
-		model.addAttribute("boleta", new BoletaDTO());
+		model.addAttribute("tipoboleta", new TipoDeBoletaDTO());
 		return "rest/form";
 	}
 
-	// http://localhost:8081/boleta/REST/id
+	// http://localhost:8081/tipoboleta/REST/id
 	@GetMapping("editar/REST/{id}")
 	public String editarREST(@PathVariable int id, Model model) {
-		BoletaDTO boleta = servicio.findByIdREST(id);
-		model.addAttribute("boleta", boleta);
+		TipoDeBoletaDTO tipoboleta = servicio.findByIdREST(id);
+		model.addAttribute("tipoboleta", tipoboleta);
+		List<TipoDeBoletaDTO> tipoboletas = servicio.findAllREST();
+        model.addAttribute("tipoboletas", tipoboletas);
 		return "rest/form";
 	}
-
-	// http://localhost:8081/boleta/grabar/REST
+	
+	// http://localhost:8081/tipoboleta/grabar/REST
 	@PostMapping("grabar/REST")
-	public String saveREST(@Valid BoletaDTO p, Model model) {
-	TipoDeBoletaDTO tipoBoleta = servicio2.findByIdREST(p.getTipoboleta().getId()); 
-	p.setTipoboleta(tipoBoleta);
+	public String saveREST(@Valid TipoDeBoletaDTO p, Model model) {
     servicio.saveREST(p);
-    return "redirect:/boleta/listar/REST";
+    return "redirect:/tipoboleta/listar/REST";
 }
-
-	// http://localhost:8081/boleta/eliminar/id
+	// http://localhost:8081/tipoboleta/eliminar/id
 	@GetMapping("eliminar/REST/{id}")
 	public String deleteREST(@PathVariable int id, Model model) {
 		servicio.deleteREST(id);
-		return "redirect:/boleta/listar/REST";
+		return "redirect:/tipoboleta/listar/REST";
 	}
 	
 	

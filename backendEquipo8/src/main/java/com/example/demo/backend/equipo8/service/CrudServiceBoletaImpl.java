@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.backend.equipo8.dto.BoletaDTO;
 import com.example.demo.backend.equipo8.entity.BoletaEntity;
+import com.example.demo.backend.equipo8.entity.TipoDeBoletaEntity;
 import com.example.demo.backend.equipo8.repository.IBoletaRepository;
 
 
@@ -24,12 +25,17 @@ public class CrudServiceBoletaImpl implements ICrudService {
 
 	public List<BoletaDTO> findAll() {
 		List<BoletaEntity> listE = (List<BoletaEntity>) data.findAll();
-		List<BoletaDTO> listDto = new ArrayList<BoletaDTO>();
+		List<BoletaDTO> listDto = new ArrayList<>();
 		for (BoletaEntity e : listE) {
-			listDto.add(e.toDTO());
-		}
-		return listDto;
-	}
+            BoletaDTO boletaDTO = e.toDTO();
+            TipoDeBoletaEntity tipoboletaEntity = e.getTipoboleta();
+            if (tipoboletaEntity != null) {
+                boletaDTO.setTipoboleta(tipoboletaEntity.toDTO());
+            }
+            listDto.add(boletaDTO);
+        }
+        return listDto;
+    }
 
 	public Optional<BoletaDTO> findById(int id) {
 		Optional<BoletaEntity> oe = data.findById(id);

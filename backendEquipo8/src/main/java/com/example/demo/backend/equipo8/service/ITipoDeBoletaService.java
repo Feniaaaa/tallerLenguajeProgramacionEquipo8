@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.demo.backend.equipo8.dto.TipoDeBoletaDTO;
+import com.example.demo.backend.equipo8.entity.TipoDeBoletaEntity;
 
 public interface ITipoDeBoletaService {
 	

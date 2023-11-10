@@ -27,16 +27,16 @@
                         <label>FECHA</label>
                         <input th:field="*{fecha}" type="text" class="form-control"/>
                     </div>
-                    
                     <div class="form-group">
-    					<label for="tipoboleta">Selecciona una opción</label>
-    					<select class="form-control" id="tipoboleta" name="tipoboleta">
-        					<option value=1>Factura</option>
-        					<option value=2>Boleta</option>
-   				 		</select>
+    					<label for="tipoboleta">Tipo</label>
+    					<select th:field="*{tipoboleta.id}" class="form-control" id="tipoboleta" name="tipoboleta">
+        					<option value="1" th:text="Factura" th:selected="${boleta.tipoboleta.id == 1}"></option>
+        					<option value="2" th:text="Boleta" th:selected="${boleta.tipoboleta.id == 2}"></option>
+    					</select>
 					</div>
                 <div class="card-footer">
                     <input type="submit" value="Guardar" class="btn btn-success">
+               
                 </div>
             </div>
         </form>

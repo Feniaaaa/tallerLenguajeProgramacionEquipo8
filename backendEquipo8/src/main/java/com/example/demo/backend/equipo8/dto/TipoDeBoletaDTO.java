@@ -1,5 +1,8 @@
 package com.example.demo.backend.equipo8.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 
@@ -17,14 +20,15 @@ public class TipoDeBoletaDTO {
 	private int id;
 
     
-    @Column(name = "tipoboleta")
-    private String tipoboleta;
+    @Column(name = "nombre")
+    private String nombre;
     
 
 	public TipoDeBoletaEntity toEntity() {
 		TipoDeBoletaEntity e = new TipoDeBoletaEntity();
 		e.setId(this.getId());
-		e.setTipoboleta(this.tipoboleta);;
+		e.setNombre(this.getNombre());
 		return e;
 	}
+	
 }

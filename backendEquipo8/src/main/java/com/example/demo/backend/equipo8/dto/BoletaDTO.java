@@ -2,6 +2,9 @@ package com.example.demo.backend.equipo8.dto;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.constraints.NotBlank;
 
 import com.example.demo.backend.equipo8.entity.BoletaEntity;
@@ -25,8 +28,8 @@ public class BoletaDTO{
 	@NotBlank
 	private String fecha;
 	
-	@JsonIgnore
-	private TipoDeBoletaEntity tipoboleta;
+	
+	private TipoDeBoletaDTO tipoboleta;
 	
 	
 	public BoletaEntity toEntity() {
@@ -34,7 +37,10 @@ public class BoletaDTO{
 		e.setId(this.getId());
 		e.setMonto(this.getMonto());
 		e.setFecha(this.getFecha());
-		e.setTipoboleta(this.getTipoboleta());
+		if (this.getTipoboleta() != null) {
+		e.setTipoboleta(this.getTipoboleta().toEntity());
+		}
 		return e;
 	}
+	
 }

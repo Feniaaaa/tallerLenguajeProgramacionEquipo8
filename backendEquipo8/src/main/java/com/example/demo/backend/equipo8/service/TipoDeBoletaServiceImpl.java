@@ -40,10 +40,12 @@ public class TipoDeBoletaServiceImpl implements ITipoDeBoletaService{
 
 	public TipoDeBoletaDTO save(TipoDeBoletaDTO dto) {
 		TipoDeBoletaEntity e = data.save(dto.toEntity());
+		
 		return e.toDTO();
 	}
 	
 	public void delete(TipoDeBoletaDTO p) {
 		data.delete(p.toEntity());
 	}
+
 }

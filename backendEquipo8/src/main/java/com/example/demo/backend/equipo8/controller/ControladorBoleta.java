@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.backend.equipo8.dto.BoletaDTO;
 import com.example.demo.backend.equipo8.service.ICrudService;
+import com.example.demo.backend.equipo8.service.ITipoDeBoletaService;
 
 @Controller
 @RequestMapping("boleta")

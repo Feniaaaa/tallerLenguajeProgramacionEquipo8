@@ -52,17 +52,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="boleta:${boletas}" >
-                <td th:text="${boleta.id}">${boleta.id}</td>
-                <td th:text="${boleta.monto}">${boleta.monto}</td>
-                <td th:text="${boleta.fecha}">${boleta.fecha}</td>
-                <td th:text="${boleta.tipoboleta}">${boleta.tipoboleta}</td>
-                <td>
-                    <a class="btn btn-warning" th:href="@{/boleta/editar/REST/}+${boleta.id}" >Editar</a>
-                    <a class="btn btn-danger" th:onclick="fxJSeliminar([[${boleta.id}]])">Eliminar</a>
-                </td>
-            </tr>
-        </tbody>
+   			 <tr th:each="boleta:${boletas}">
+        		<td th:text="${boleta.id}"></td>
+       			<td th:text="${boleta.monto}"></td>
+        		<td th:text="${boleta.fecha}"></td>
+        		<td th:text="${boleta.tipoboleta.nombre}"></td>
+       	 		<td>
+            		<a class="btn btn-warning" th:href="@{/boleta/editar/REST/}+${boleta.id}" >Editar</a>
+            		<a class="btn btn-danger" th:onclick="fxJSeliminar([[${boleta.id}]])">Eliminar</a>
+        		</td>
+    		</tr>
+		</tbody>
     </table>
 </div>
 <div class="volver-button">
