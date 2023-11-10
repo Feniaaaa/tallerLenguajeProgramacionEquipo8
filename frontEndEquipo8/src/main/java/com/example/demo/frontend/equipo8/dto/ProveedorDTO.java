@@ -24,8 +24,8 @@ public class ProveedorDTO {
 	@NotBlank
 	private String telefono;
 	
-	@NotBlank
-	private String ciudad;
+	
+	private LocalidadDTO localidad;
 	
 	
 }

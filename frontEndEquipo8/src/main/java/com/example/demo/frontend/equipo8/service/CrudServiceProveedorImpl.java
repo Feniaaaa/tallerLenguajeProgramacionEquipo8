@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.demo.frontend.equipo8.dto.ProveedorDTO;
+import com.example.demo.frontend.equipo8.dto.LocalidadDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
@@ -60,12 +61,12 @@ public class CrudServiceProveedorImpl implements ICrudServiceP {
 	}
 
 	@Override
-	public ProveedorDTO saveREST(ProveedorDTO p) {
+	public ProveedorDTO saveREST(ProveedorDTO pr) {
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 
-			HttpEntity<ProveedorDTO> requestEntity = new HttpEntity<>(p, headers);
+			HttpEntity<ProveedorDTO> requestEntity = new HttpEntity<>(pr, headers);
 
 			RestTemplate restTemplate = new RestTemplate();
 			ResponseEntity<ProveedorDTO> responseEntity = restTemplate.postForEntity("http://localhost:8080/proveedor/REST",

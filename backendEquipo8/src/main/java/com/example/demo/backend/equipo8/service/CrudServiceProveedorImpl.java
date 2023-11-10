@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.backend.equipo8.dto.ProveedorDTO;
+import com.example.demo.backend.equipo8.entity.LocalidadEntity;
 import com.example.demo.backend.equipo8.entity.ProveedorEntity;
 import com.example.demo.backend.equipo8.repository.IProveedorRepository;
 
@@ -27,8 +28,13 @@ public class CrudServiceProveedorImpl implements ICrudServiceP {
 		List<ProveedorEntity> listE = (List<ProveedorEntity>) data.findAll();
 		List<ProveedorDTO> listDto = new ArrayList<ProveedorDTO>();
 		for (ProveedorEntity e : listE) {
-			listDto.add(e.toDTO());
-		}
+            ProveedorDTO proveedorDTO = e.toDTO();
+            LocalidadEntity localidadEntity = e.getLocalidad();
+            if (localidadEntity != null) {
+                proveedorDTO.setLocalidad(localidadEntity.toDTO());
+            }
+            listDto.add(proveedorDTO);
+        }
 		return listDto;
 	}
 

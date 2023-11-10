@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.example.demo.backend.equipo8.dto.LocalidadDTO;
 import com.example.demo.backend.equipo8.dto.ProveedorDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

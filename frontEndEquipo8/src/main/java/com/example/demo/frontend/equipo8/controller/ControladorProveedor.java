@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+import com.example.demo.frontend.equipo8.dto.LocalidadDTO;
 import com.example.demo.frontend.equipo8.dto.ProveedorDTO;
+import com.example.demo.frontend.equipo8.service.ICrudServiceL;
 import com.example.demo.frontend.equipo8.service.ICrudServiceP;
 
 
@@ -26,12 +27,17 @@ public class ControladorProveedor {
 	@Autowired
 	private ICrudServiceP servicio;
 	
+	@Autowired
+	private ICrudServiceL servicioL;
+	
 
 	// http://localhost:8081/proveedor/listar/REST
 	@GetMapping("listar/REST")
 	public String listarREST(Model model) {
 		List<ProveedorDTO> proveedores = servicio.findAllREST();
 		model.addAttribute("proveedores", proveedores);
+		List<LocalidadDTO> localidades = servicioL.findAllREST();
+		model.addAttribute("localidades", localidades);
 		return "rest/indexP";
 	}
 
@@ -52,8 +58,10 @@ public class ControladorProveedor {
 
 	// http://localhost:8081/proveedor/grabar/REST
 	@PostMapping("grabar/REST")
-	public String saveREST(@Valid ProveedorDTO p, Model model) {
-		servicio.saveREST(p);
+	public String saveREST(@Valid ProveedorDTO pr, Model model) {
+		LocalidadDTO localidad = servicioL.findByIdREST(pr.getLocalidad().getId()); 
+	    pr.setLocalidad(localidad);
+		servicio.saveREST(pr);
 		return "redirect:/proveedor/listar/REST";
 	}
 

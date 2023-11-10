@@ -27,7 +27,7 @@ public class ProveedorDTO {
 	private String telefono;
 	
 	
-	private LocalidadEntity localidad;
+	private LocalidadDTO localidad;
 	
 	
 	
@@ -38,7 +38,9 @@ public class ProveedorDTO {
 		e.setApellido(this.getApellido());
 		e.setNombre_compania(this.getNombre_compania());
 		e.setTelefono(this.getTelefono());
-		e.setLocalidad(this.getLocalidad());
+		if (this.getLocalidad() != null) {
+	        e.setLocalidad(this.getLocalidad().toEntity());
+	        }
 		return e;
 	}
 }

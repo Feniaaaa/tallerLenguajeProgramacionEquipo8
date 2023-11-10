@@ -55,12 +55,12 @@
         </thead>
         <tbody>
             <tr th:each="proveedor:${proveedores}">
-                <td th:text="${proveedor.id}">${proveedor.id}</td>
-                <td th:text="${proveedor.nombre}">${proveedor.nombre}</td>
-                <td th:text="${proveedor.apellido}">${proveedor.apellido}</td>
-                <td th:text="${proveedor.nombre_compania}">${proveedor.nombre_compania}</td>
-                <td th:text="${proveedor.telefono}">${proveedor.telefono}</td>
-                <td th:text="${proveedor.ciudad}">${proveedor.ciudad}</td>
+                <td th:text="${proveedor.id}"></td>
+                <td th:text="${proveedor.nombre}"></td>
+                <td th:text="${proveedor.apellido}"></td>
+                <td th:text="${proveedor.nombre_compania}"></td>
+                <td th:text="${proveedor.telefono}"></td>
+                <td th:text="${proveedor.localidad.ciudad}"></td>
                 <td>
                     <a class="btn btn-warning" th:href="@{/proveedor/editar/REST/}+${proveedor.id}" >Editar</a>
                     <a class="btn btn-danger"  th:onclick="fxJSeliminar2([[${proveedor.id}]])">Eliminar</a>
