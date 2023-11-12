@@ -2,70 +2,107 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página en Mantenimiento</title>
+    <title>Página de Pago</title>
     <style>
         body {
-            background-image: url('https://thumbs.dreamstime.com/b/el-trabajador-del-gato-sostiene-rodillo-y-pintura-obrero-beige-de-un-chaleco-con-casco-botas-cepillo-rodillos-una-lata-pl%C3%A1stico-193410470.jpg');
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.hdqwalls.com/download/colorful-mountains-night-minimal-8k-w5-7680x4320.jpg');
             background-size: cover;
-            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            height: 90vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 90vh;
-            margin: 0;
-        }
-
-        h1, p {
-            background-color: rgba(192, 192, 192, 0.5); /* Fondo más transparente */
-            padding: 20px; /* Espacio interno para el texto */
-            border-radius: 10px; /* Bordes redondeados */
-        }
-
-        h1 {
-            font-size: 60px;
-            color: rgb(255, 0, 0);
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        p {
-            font-size: 38px;
-            color: rgb(255, 0, 0);
-            text-align: center;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        #go-back-button {
-            background-color: rgb(0, 128, 192);
+            justify-content: center;
             color: white;
-            border: 2px solid black; /* Bordes negros */
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 20px;
-            transition: background-color 0.3s;
         }
 
-        #go-back-button:hover {
-            background-color: rgba(255, 0, 0, 0.9); /* Cambia el color al pasar el cursor por encima */
+        form {
+            max-width: 400px;
+            width: 80%;
+            margin: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            color: black; /* Ajusta el color del texto del formulario para mejor visibilidad */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px; /* Espaciado a la derecha para separar los botones */
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .volver-btn {
+            background-color: #f44336; /* Color rojo para el botón de volver */
+            margin-top: 10px; /* Espaciado superior para separar los botones */
         }
     </style>
 </head>
 <body>
-    <h1>¡Estamos en Mantenimiento!</h1>
-    <p>Lamentablemente, nuestra página web está temporalmente fuera de servicio por mantenimiento.</p>
-    <p>Volveremos pronto. ¡Gracias por tu paciencia!</p>
-    
-    <button id="go-back-button">Volver a la página anterior</button>
+    <h1>Página de Pago</h1>
+
+    <form>
+        <label for="metodoPago">Selecciona el Método de Pago:</label>
+        <select id="metodoPago" name="metodoPago" required>
+            <option value="efectivo">Efectivo</option>
+            <option value="debito">Tarjeta de Débito</option>
+            <option value="credito">Tarjeta de Crédito</option>
+        </select>
+
+        <label for="monto">Monto a Pagar:</label>
+        <input type="number" id="monto" name="monto" min="0" step="50" value="4400" readonly>
+
+        <label for="informacion">Información Adicional:</label>
+        <input type="text" id="informacion" name="informacion" required>
+
+        <button onclick="realizarPago()">Pagar</button>
+        <button class="volver-btn" onclick="volverPagina()">Volver</button>
+
+    </form>
 
     <script>
-        const goBackButton = document.getElementById('go-back-button');
+        function realizarPago() {
+            alert('¡Pago exitoso!');
+            window.location.href = 'http://localhost:8081/usuario/login/homepage';
+        }
 
-        goBackButton.addEventListener('click', () => {
+        function volverPagina() {
             window.history.back();
-        });
+        }
     </script>
 </body>
 </html>
+
+
+
+
