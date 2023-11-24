@@ -6,38 +6,60 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body {
-            background-image: url('https://www.pixelstalk.net/wp-content/uploads/images6/Minimal-HD-Wallpaper-Free-download.jpg'); /* Reemplaza la URL con la de tu imagen de fondo */
+            background-image: url('https://www.pixelstalk.net/wp-content/uploads/images6/Minimal-HD-Wallpaper-Free-download.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             color: #333;
         }
         .container {
-            background-color: #fff; /* Fondo blanco sólido */
+            background-color: #fff;
             padding: 20px;
-            border: 2px solid #333; /* Borde sólido de color gris oscuro (#333) */
+            border: 2px solid #333;
             border-radius: 10px;
             margin-top: 30px;
         }
         .volver-button {
             text-align: center;
-            margin-top: 20px; /* Agrega espacio entre el panel y el botón */
+            margin-top: 20px;
         }
         .volver-button .btn {
-            font-size: 20px; /* Aumenta el tamaño del texto del botón */
+            font-size: 20px;
         }
         .copyright {
             font-size: 1rem;
             text-align: right;
             position: absolute;
-            color: #fff; /* Texto blanco en el botón */
+            color: #fff;
             bottom: 10px;
             right: 10px;
+        }
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-input {
+            width: 60%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 <div class="container mt-4">
+    <div class="search-bar">
+        <input type="text" class="search-input" id="searchInput" placeholder="Buscar por monto, fecha, o tipo de boleta">
+        <button class="search-button" onclick="filterTable()">Buscar</button>
+    </div>
     <a th:href="@{nuevo/REST}" class="btn btn-primary">Nuevo</a>
     <br>
     <br>
@@ -52,17 +74,17 @@
             </tr>
         </thead>
         <tbody>
-   			 <tr th:each="boleta:${boletas}">
-        		<td th:text="${boleta.id}"></td>
-       			<td th:text="${boleta.monto}"></td>
-        		<td th:text="${boleta.fecha}"></td>
-        		<td th:text="${boleta.tipoboleta.nombre}"></td>
-       	 		<td>
-            		<a class="btn btn-warning" th:href="@{/boleta/editar/REST/}+${boleta.id}" >Editar</a>
-            		<a class="btn btn-danger" th:onclick="fxJSeliminar([[${boleta.id}]])">Eliminar</a>
-        		</td>
-    		</tr>
-		</tbody>
+            <tr th:each="boleta:${boletas}">
+                <td th:text="${boleta.id}"></td>
+                <td th:text="${boleta.monto}"></td>
+                <td th:text="${boleta.fecha}"></td>
+                <td th:text="${boleta.tipoboleta.nombre}"></td>
+                <td>
+                    <a class="btn btn-warning" th:href="@{/boleta/editar/REST/}+${boleta.id}" >Editar</a>
+                    <a class="btn btn-danger" th:onclick="fxJSeliminar([[${boleta.id}]])">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>
 <div class="volver-button">
@@ -74,5 +96,29 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="/fxJSfuncionesREST.js"></script>
+<script>
+    function filterTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.querySelector(".table");
+        tr = table.getElementsByTagName("tr");
+		
+        for (i = 1; i < tr.length; i++) { 
+            var found = false;
+            for (var j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
+                td = tr[i].getElementsByTagName("td")[j];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            tr[i].style.display = found ? "" : "none";
+        }
+    }
+</script>
 </body>
 </html>
