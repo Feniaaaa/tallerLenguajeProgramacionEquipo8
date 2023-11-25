@@ -229,6 +229,7 @@
 
             totalElement.textContent = `Total: $${totalConIVA.toFixed(2)}`;
             ivaElement.textContent = `IVA: $${iva.toFixed(2)}`;
+            localStorage.setItem('totalCarrito', totalConIVA);
         }
 
         // Función para realizar el pago (puedes ajustar según tus necesidades)
