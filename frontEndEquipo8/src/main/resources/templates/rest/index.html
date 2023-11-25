@@ -57,9 +57,11 @@
 <body>
 <div class="container mt-4">
     <div class="search-bar">
-        <input type="text" class="search-input" id="searchInput" placeholder="Buscar por monto, fecha, o tipo de boleta">
-        <button class="search-button" onclick="filterTable()">Buscar</button>
-    </div>
+    <input type="text" class="search-input" id="searchInput" placeholder="Buscar por monto, fecha, o tipo de boleta">
+    <button class="search-button" onclick="filterTable()">Buscar</button>
+    <button class="search-button" onclick="clearFilter()">Eliminar Filtro</button>
+</div>
+
     <a th:href="@{nuevo/REST}" class="btn btn-primary">Nuevo</a>
     <br>
     <br>
@@ -118,6 +120,13 @@
             }
             tr[i].style.display = found ? "" : "none";
         }
+    }
+</script>
+<script>
+    function clearFilter() {
+        var input = document.getElementById("searchInput");
+        input.value = "";
+        filterTable(); // Llama a la función filterTable para mostrar todos los elementos nuevamente
     }
 </script>
 </body>
