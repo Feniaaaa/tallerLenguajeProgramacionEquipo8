@@ -21,29 +21,24 @@
             overflow-y: auto;
         }
 
-        /* Estilos para centrar los títulos y cambiar el color del texto a blanco */
         .centered-title {
             text-align: center;
             color: white;
         }
 
-        /* Cambiar el color del texto dentro del contenedor "Carrito de Compra" a negro */
         .carrito-content {
             color: black;
         }
 
-        /* Estilo para la tabla dentro del contenedor "Carrito de Compra" */
         .carrito-table {
             background-color: white;
             color: black;
         }
 
-        /* Cambiar el color del texto dentro del contenedor "Menú de Helados" a negro */
         .menu-content {
             color: black;
         }
 
-        /* Cambiar el color del texto de "Total" e "IVA" a blanco */
         .total {
             color: rgb(0, 0, 0);
         }
@@ -52,27 +47,39 @@
             color: rgb(0, 0, 0);
         }
 
-        /* Estilos para los encabezados de tabla */
         .table th {
-            background-color: #343a40; /* Color de fondo gris oscuro */
-            color: white; /* Texto blanco */
+            background-color: #343a40;
+            color: white;
         }
 
-        /* Estilos para las filas impares en la tabla */
         .table tbody tr:nth-child(odd) {
-            background-color: #f8f9fa; /* Color de fondo gris claro */
+            background-color: #f8f9fa;
         }
 
-        /* Estilos para el título "Registro de Venta" */
         .title-container {
-            background: rgba(0, 0, 0, 0.7); /* Fondo transparente */
+            background: rgba(0, 0, 0, 0.7);
             text-align: center;
             padding: 20px;
         }
 
         .title {
-            font-size: 36px; /* Tamaño de fuente más grande */
+            font-size: 36px;
             color: white;
+        }
+
+        .menu-button {
+            width: 100%;
+            margin-bottom: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .menu-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -88,16 +95,34 @@
                         <h3 class="centered-title">Menú de Helados</h3>
                     </div>
                     <div class="card-body menu-content">
-                        <ul class="list-group">
-                            <li class="list-group-item">Helado Frutilla - $2100</li>
-                            <li class="list-group-item">Helado Strawberries - $3100</li>
-                            <li class="list-group-item">Palo Frutilla - $1400</li>
-                            <li class="list-group-item">Helado Chocolate - $2300</li>
-                            <li class="list-group-item">Helado de Vainilla - $2000</li>
-                            <li class="list-group-item">Helado de Menta - $2200</li>
-                            <li class="list-group-item">Helado de Limón - $1900</li>
-                            <li class="list-group-item">Helado de Durazno - $2500</li>
-                            <li class="list-group-item">Helado de Fresa - $1800</li>
+                        <ul class="list-group" id="menuList">
+                            <li class="list-group-item">
+                                <button class="btn btn-primary menu-button" data-producto="Helado Frutilla" data-precio="2100">Helado Frutilla - $2100</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-primary menu-button" data-producto="Helado Strawberries" data-precio="3100">Helado Strawberries - $3100</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-primary menu-button" data-producto="Palo Frutilla" data-precio="1400">Palo Frutilla - $1400</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-primary menu-button" data-producto="Helado Chocolate" data-precio="2300">Helado Chocolate - $2300</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-primary menu-button" data-producto="Helado de Vainilla" data-precio="2000">Helado de Vainilla - $2000</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-primary menu-button" data-producto="Helado de Menta" data-precio="2200">Helado de Menta - $2200</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-primary menu-button" data-producto="Helado de Limón" data-precio="1900">Helado de Limón - $1900</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-primary menu-button" data-producto="Helado de Durazno" data-precio="2500">Helado de Durazno - $2500</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-primary menu-button" data-producto="Helado de Fresa" data-precio="1800">Helado de Fresa - $1800</button>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -115,27 +140,17 @@
                                     <th>Precio</th>
                                     <th>Cantidad</th>
                                     <th>Subtotal</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Helado Chocolate</td>
-                                    <td>$2300</td>
-                                    <td>1</td>
-                                    <td>$2300</td>
-                                </tr>
-                                <tr>
-                                    <td>Helado Frutilla</td>
-                                    <td>$2100</td>
-                                    <td>1</td>
-                                    <td>$2100</td>
-                                </tr>
+                            <tbody id="carritoBody">
+                                <!-- Contenido del carrito se agregará aquí -->
                             </tbody>
                         </table>
                         <div class="text-center">
-                            <h4 class="total">Total: $4400</h4>
-                            <h5 class="iva">IVA: $836</h5>
-                            <a href="http://localhost:8081/usuario/login/homepage/registroVenta/pagar" class="btn btn-primary">Pagar</a>
+                            <h4 class="total">Total: $0</h4>
+                            <h5 class="iva">IVA: $0</h5>
+                            <button onclick="realizarPago()" class="btn btn-primary">Pagar</button>
                             <a href="http://localhost:8081/usuario/login/homepage" class="btn btn-secondary">Volver</a>
                         </div>
                     </div>
@@ -143,7 +158,101 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Variables para mantener el estado del carrito
+        const carrito = [];
+        let total = 0;
+        const ivaPorcentaje = 0.16; // Porcentaje de IVA
+
+        // Función para agregar al carrito y actualizar la tabla
+        function agregarAlCarrito(producto, precio) {
+            // Verificar si el producto ya está en el carrito
+            const index = carrito.findIndex(item => item.producto === producto);
+
+            if (index !== -1) {
+                // Si el producto ya está en el carrito, incrementar la cantidad
+                carrito[index].cantidad += 1;
+            } else {
+                // Si el producto no está en el carrito, agregarlo como uno nuevo
+                carrito.push({ producto, precio, cantidad: 1 });
+            }
+
+            actualizarTablaCarrito();
+            calcularTotal();
+        }
+
+        // Función para eliminar un artículo del carrito
+        function eliminarItem(producto) {
+            const index = carrito.findIndex(item => item.producto === producto);
+
+            if (index !== -1) {
+                // Si el producto está en el carrito, reducir la cantidad o eliminar si la cantidad es 1
+                if (carrito[index].cantidad > 1) {
+                    carrito[index].cantidad -= 1;
+                } else {
+                    carrito.splice(index, 1);
+                }
+
+                actualizarTablaCarrito();
+                calcularTotal();
+            }
+        }
+
+        // Función para actualizar la tabla del carrito
+        function actualizarTablaCarrito() {
+            const carritoBody = document.getElementById('carritoBody');
+            carritoBody.innerHTML = '';
+
+            carrito.forEach(item => {
+                const subtotal = item.precio * item.cantidad;
+                carritoBody.innerHTML += `
+                    <tr>
+                        <td>${item.producto}</td>
+                        <td>${item.precio}</td>
+                        <td>${item.cantidad}</td>
+                        <td>${subtotal}</td>
+                        <td><button onclick="eliminarItem('${item.producto}')">Eliminar</button></td>
+                    </tr>
+                `;
+            });
+        }
+
+        // Función para calcular el total y el IVA
+        function calcularTotal() {
+            total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+            const iva = total * ivaPorcentaje;
+            const totalConIVA = total + iva;
+
+            const totalElement = document.querySelector('.total');
+            const ivaElement = document.querySelector('.iva');
+
+            totalElement.textContent = `Total: $${totalConIVA.toFixed(2)}`;
+            ivaElement.textContent = `IVA: $${iva.toFixed(2)}`;
+        }
+
+        // Función para realizar el pago (puedes ajustar según tus necesidades)
+        function realizarPago() {
+            // Realizar lógica para el pago, enviar carrito al servidor, etc.
+            // Aquí puedes hacer una solicitud AJAX al backend para procesar el pago.
+
+            // Por ejemplo, mostrar un mensaje en la consola:
+            console.log('Pago realizado con éxito. Detalles del carrito:', carrito);
+
+            // Redirigir al usuario a una página de confirmación o realizar otras acciones necesarias.
+            window.location.href = "http://localhost:8081/usuario/login/homepage/registroVenta/pagar";
+        }
+
+        // Asignar eventos de clic a los botones del menú para agregar al carrito
+        const menuButtons = document.querySelectorAll('.menu-button');
+        menuButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const producto = this.getAttribute('data-producto');
+                const precio = parseInt(this.getAttribute('data-precio'));
+                agregarAlCarrito(producto, precio);
+            });
+        });
+    </script>
 </body>
 </html>
-
 
