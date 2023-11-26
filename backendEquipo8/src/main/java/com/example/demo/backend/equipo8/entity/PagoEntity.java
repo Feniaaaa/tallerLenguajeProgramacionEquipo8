@@ -1,4 +1,5 @@
 package com.example.demo.backend.equipo8.entity;
+import com.example.demo.backend.equipo8.dto.PagoDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
@@ -27,5 +28,12 @@ public class PagoEntity  {
         this.id = id;
 
     }
+    
+    public PagoDTO toDTO() {
+		PagoDTO dto = new PagoDTO();
+		dto.setId(this.getId());
+		dto.setMetodoPago(this.getMetodoPago());
+		return dto;
+	}
 
 }
