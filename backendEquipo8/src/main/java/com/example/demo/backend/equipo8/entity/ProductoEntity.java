@@ -1,5 +1,7 @@
 package com.example.demo.backend.equipo8.entity;
 
+import com.example.demo.backend.equipo8.dto.BoletaDTO;
+import com.example.demo.backend.equipo8.dto.ProductoDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
@@ -34,4 +36,12 @@ public class ProductoEntity {
         this.precio = precio;
         this.cantidad = cantidad;
     }
+    
+    public ProductoDTO toDTO() {
+    	ProductoDTO dto = new ProductoDTO();
+		dto.setId(this.getId());
+		dto.setPrecio(this.getPrecio());
+		dto.setCantidad(this.getCantidad());
+		return dto;
+	}
 }

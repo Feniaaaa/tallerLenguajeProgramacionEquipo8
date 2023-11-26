@@ -6,7 +6,7 @@ import java.util.Optional;
 import com.example.demo.backend.equipo8.dto.LocalidadDTO;
 
 
-public interface ICrudServiceL {
+public interface ICrudServiceLocalidad {
 	
 	public List<LocalidadDTO> findAll();
 

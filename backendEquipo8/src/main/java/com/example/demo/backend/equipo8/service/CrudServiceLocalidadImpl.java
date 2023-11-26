@@ -18,7 +18,7 @@ import com.example.demo.backend.equipo8.repository.ILocalidadRepository;
 @Component
 @Service
 
-public class CrudServiceLocalidadImpl implements ICrudServiceL {
+public class CrudServiceLocalidadImpl implements ICrudServiceLocalidad {
 
 	@Autowired
 	private ILocalidadRepository data;

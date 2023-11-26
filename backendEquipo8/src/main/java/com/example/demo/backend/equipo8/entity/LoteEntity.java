@@ -1,5 +1,7 @@
 package com.example.demo.backend.equipo8.entity;
 
+import com.example.demo.backend.equipo8.dto.LoteDTO;
+import com.example.demo.backend.equipo8.dto.ProductoDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
@@ -40,4 +42,13 @@ public class LoteEntity {
         this.litros = litros;
         this.fechaVencimiento = fechaVencimiento;
     }
+    
+    public LoteDTO toDTO() {
+    	LoteDTO dto = new LoteDTO();
+		dto.setId(this.getId());
+		dto.setNombre(this.getNombre());
+		dto.setLitros(this.getLitros());
+		dto.setFechaVencimiento(this.getFechaVencimiento());
+		return dto;
+	}
 }

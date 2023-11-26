@@ -6,7 +6,7 @@ import java.util.Optional;
 import com.example.demo.backend.equipo8.dto.BoletaDTO;
 
 
-public interface ICrudService {
+public interface ICrudServiceBoleta {
 
 	public List<BoletaDTO> findAll();
 

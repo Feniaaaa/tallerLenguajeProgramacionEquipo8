@@ -18,35 +18,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-import com.example.demo.backend.equipo8.dto.LocalidadDTO;
-import com.example.demo.backend.equipo8.service.ICrudServiceLocalidad;
+import com.example.demo.backend.equipo8.dto.LoteDTO;
+import com.example.demo.backend.equipo8.service.IServiceLote;
 
 @Controller
-@RequestMapping("localidad")
-public class ControladorLocalidad {
+@RequestMapping("lote")
+public class ControladorLote {
 
 	@Autowired
-	private ICrudServiceLocalidad servicio;
+	private IServiceLote servicio;
 	
 	@ResponseBody
 	@PostMapping("REST")
-	public LocalidadDTO agregarLocalidad(@Valid @NonNull @RequestBody LocalidadDTO dto) {
+	public LoteDTO agregarLote(@Valid @NonNull @RequestBody LoteDTO dto) {
 		return servicio.save(dto);
 	}
 	
 	
 	@ResponseBody
 	@GetMapping("REST")
-	public List<LocalidadDTO> getAllLocalidades() {
+	public List<LoteDTO> getAllLotes() {
 		return servicio.findAll();
 	}
 
 	@ResponseBody
 	@GetMapping("REST/{id}")
-	public LocalidadDTO getLocalidadById(@PathVariable("id") int id) {
-		Optional<LocalidadDTO> oDto = servicio.findById(id);
+	public LoteDTO getLoteById(@PathVariable("id") int id) {
+		Optional<LoteDTO> oDto = servicio.findById(id);
 		if (oDto.isPresent()) {
-			LocalidadDTO dto = oDto.get();
+			LoteDTO dto = oDto.get();
 			return dto;
 		} else {
 			return null;
@@ -55,8 +55,8 @@ public class ControladorLocalidad {
 
 	@ResponseBody
 	@PutMapping(("REST"))
-	public LocalidadDTO updateLocalidad(@Valid @NonNull @RequestBody LocalidadDTO dto) {
-		Optional<LocalidadDTO> oDto = servicio.findById(dto.getId());
+	public LoteDTO updateLote(@Valid @NonNull @RequestBody LoteDTO dto) {
+		Optional<LoteDTO> oDto = servicio.findById(dto.getId());
 		if (oDto.isPresent() == true) {
 			return servicio.save(dto);
 		} else
@@ -65,8 +65,8 @@ public class ControladorLocalidad {
 
 	@ResponseBody
 	@DeleteMapping("REST/{id}")
-	public boolean deleteLocalidadoById(@PathVariable("id") int id) {
-		Optional<LocalidadDTO> oDto = servicio.findById(id);
+	public boolean deleteLoteById(@PathVariable("id") int id) {
+		Optional<LoteDTO> oDto = servicio.findById(id);
 		if (oDto.isPresent() == true) {
 			servicio.delete(oDto.get());
 			return true;

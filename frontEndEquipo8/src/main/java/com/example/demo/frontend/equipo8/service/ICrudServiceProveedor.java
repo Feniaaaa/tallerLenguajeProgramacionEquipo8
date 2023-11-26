@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.demo.frontend.equipo8.dto.ProveedorDTO;
 
-public interface ICrudServiceP {
+public interface ICrudServiceProveedor {
 
 	public List<ProveedorDTO> findAllREST();
 

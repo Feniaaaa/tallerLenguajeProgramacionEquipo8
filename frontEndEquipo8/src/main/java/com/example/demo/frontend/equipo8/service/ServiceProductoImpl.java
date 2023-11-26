@@ -13,23 +13,22 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.demo.frontend.equipo8.dto.ProveedorDTO;
-import com.example.demo.frontend.equipo8.dto.LocalidadDTO;
+
+import com.example.demo.frontend.equipo8.dto.ProductoDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 @Service
-public class CrudServiceLocalidadImpl implements ICrudServiceLocalidad {
-
+public class ServiceProductoImpl implements IServiceProducto {
 
 	@Override
-	public List<LocalidadDTO> findAllREST() {
+	public List<ProductoDTO> findAllREST() {
 		try {
 			ObjectMapper unMapper = new ObjectMapper();
 
-			List<LocalidadDTO> localidades = Arrays
-					.asList(unMapper.readValue(new URL("http://localhost:8080/localidad/REST"), LocalidadDTO[].class));
-			return localidades;
+			List<ProductoDTO> productos = Arrays
+					.asList(unMapper.readValue(new URL("http://localhost:8080/producto/REST"), ProductoDTO[].class));
+			return productos;
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -38,17 +37,17 @@ public class CrudServiceLocalidadImpl implements ICrudServiceLocalidad {
 	}
 
 	@Override
-	public LocalidadDTO findByIdREST(int id) {
+	public ProductoDTO findByIdREST(int id) {
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 
 			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<LocalidadDTO> responseEntity = restTemplate
-					.getForEntity("http://localhost:8080/localidad/REST" + "/" + id, LocalidadDTO.class);
+			ResponseEntity<ProductoDTO> responseEntity = restTemplate
+					.getForEntity("http://localhost:8080/producto/REST" + "/" + id, ProductoDTO.class);
 
 			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				LocalidadDTO dto = responseEntity.getBody();
+				ProductoDTO dto = responseEntity.getBody();
 				return dto;
 			} else {
 				System.out.println("A ocurrido un error");
@@ -61,19 +60,19 @@ public class CrudServiceLocalidadImpl implements ICrudServiceLocalidad {
 	}
 
 	@Override
-	public LocalidadDTO saveREST(LocalidadDTO l) {
+	public ProductoDTO saveREST(ProductoDTO p) {
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 
-			HttpEntity<LocalidadDTO> requestEntity = new HttpEntity<>(l, headers);
+			HttpEntity<ProductoDTO> requestEntity = new HttpEntity<>(p, headers);
 
 			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<LocalidadDTO> responseEntity = restTemplate.postForEntity("http://localhost:8080/localidad/REST",
-					requestEntity, LocalidadDTO.class);
+			ResponseEntity<ProductoDTO> responseEntity = restTemplate.postForEntity("http://localhost:8080/producto/REST",
+					requestEntity, ProductoDTO.class);
 
 			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				LocalidadDTO dto = responseEntity.getBody();
+				ProductoDTO dto = responseEntity.getBody();
 				return dto;
 			} else {
 				System.out.println("A ocurrido un error");
@@ -86,19 +85,19 @@ public class CrudServiceLocalidadImpl implements ICrudServiceLocalidad {
 	}
 
 	@Override
-	public LocalidadDTO deleteREST(int id) {
+	public ProductoDTO deleteREST(int id) {
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 
 			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<LocalidadDTO> responseEntity = restTemplate
-					.getForEntity("http://localhost:8080/localidad/REST" + "/" + id, LocalidadDTO.class);
+			ResponseEntity<ProductoDTO> responseEntity = restTemplate
+					.getForEntity("http://localhost:8080/producto/REST" + "/" + id, ProductoDTO.class);
 
 			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				LocalidadDTO dto = responseEntity.getBody();
+				ProductoDTO dto = responseEntity.getBody();
 
-				restTemplate.delete("http://localhost:8080/localidad/REST" + "/" + id);
+				restTemplate.delete("http://localhost:8080/producto/REST" + "/" + id);
 
 				return dto;
 			} else {
@@ -110,6 +109,7 @@ public class CrudServiceLocalidadImpl implements ICrudServiceLocalidad {
 			return null;
 		}
 	}
+
 	
 	
 

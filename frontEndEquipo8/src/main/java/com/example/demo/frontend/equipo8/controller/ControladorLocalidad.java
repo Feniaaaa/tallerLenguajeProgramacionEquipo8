@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.frontend.equipo8.dto.LocalidadDTO;
-import com.example.demo.frontend.equipo8.service.ICrudServiceL;
+import com.example.demo.frontend.equipo8.service.ICrudServiceLocalidad;
 
 
 
@@ -25,7 +25,7 @@ import com.example.demo.frontend.equipo8.service.ICrudServiceL;
 public class ControladorLocalidad {
 
 	@Autowired
-	private ICrudServiceL servicio;
+	private ICrudServiceLocalidad servicio;
 	
 	// http://localhost:8081/localidad/listar/REST
 	@GetMapping("listar/REST")

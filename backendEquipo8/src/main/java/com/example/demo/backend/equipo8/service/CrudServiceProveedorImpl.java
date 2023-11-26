@@ -19,7 +19,7 @@ import com.example.demo.backend.equipo8.repository.IProveedorRepository;
 @Component
 @Service
 
-public class CrudServiceProveedorImpl implements ICrudServiceP {
+public class CrudServiceProveedorImpl implements ICrudServiceProveedor {
 
 	@Autowired
 	private IProveedorRepository data;

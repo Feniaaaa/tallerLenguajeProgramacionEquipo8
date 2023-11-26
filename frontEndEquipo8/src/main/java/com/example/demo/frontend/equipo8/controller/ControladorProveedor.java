@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.frontend.equipo8.dto.LocalidadDTO;
 import com.example.demo.frontend.equipo8.dto.ProveedorDTO;
-import com.example.demo.frontend.equipo8.service.ICrudServiceL;
-import com.example.demo.frontend.equipo8.service.ICrudServiceP;
+import com.example.demo.frontend.equipo8.service.ICrudServiceLocalidad;
+import com.example.demo.frontend.equipo8.service.ICrudServiceProveedor;
 
 
 
@@ -25,10 +25,10 @@ import com.example.demo.frontend.equipo8.service.ICrudServiceP;
 public class ControladorProveedor {
 
 	@Autowired
-	private ICrudServiceP servicio;
+	private ICrudServiceProveedor servicio;
 	
 	@Autowired
-	private ICrudServiceL servicioL;
+	private ICrudServiceLocalidad servicioL;
 	
 
 	// http://localhost:8081/proveedor/listar/REST

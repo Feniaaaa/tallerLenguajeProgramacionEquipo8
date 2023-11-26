@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.frontend.equipo8.dto.TipoDeBoletaDTO;
-import com.example.demo.frontend.equipo8.service.ICrudServiceTB;
+import com.example.demo.frontend.equipo8.service.ICrudServiceTipoDeBoleta;
 
 
 @Controller
@@ -22,7 +22,7 @@ import com.example.demo.frontend.equipo8.service.ICrudServiceTB;
 public class ControladorTipoDeBoleta {
 
 	@Autowired
-	private ICrudServiceTB servicio;
+	private ICrudServiceTipoDeBoleta servicio;
 	
 	//http://localhost:8081/tipoboleta/listar/REST
 	@GetMapping("listar/REST")

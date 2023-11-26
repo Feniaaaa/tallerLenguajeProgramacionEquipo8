@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 @Service
-public class CrudServiceTipoDeBoletaImpl implements ICrudServiceTB {
+public class CrudServiceTipoDeBoletaImpl implements ICrudServiceTipoDeBoleta {
 
 
 	@Override

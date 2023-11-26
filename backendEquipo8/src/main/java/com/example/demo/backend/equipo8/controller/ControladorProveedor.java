@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import com.example.demo.backend.equipo8.dto.ProveedorDTO;
-import com.example.demo.backend.equipo8.service.ICrudServiceP;
+import com.example.demo.backend.equipo8.service.ICrudServiceProveedor;
 
 @Controller
 @RequestMapping("proveedor")
 public class ControladorProveedor {
 
 	@Autowired
-	private ICrudServiceP servicio;
+	private ICrudServiceProveedor servicio;
 	
 	@ResponseBody
 	@PostMapping("REST")

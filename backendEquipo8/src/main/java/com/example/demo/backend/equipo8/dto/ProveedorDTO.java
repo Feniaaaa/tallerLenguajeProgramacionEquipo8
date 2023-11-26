@@ -3,7 +3,6 @@ package com.example.demo.backend.equipo8.dto;
 import javax.validation.constraints.NotBlank;
 
 import com.example.demo.backend.equipo8.entity.ProveedorEntity;
-import com.example.demo.backend.equipo8.entity.LocalidadEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -6,7 +6,7 @@ import java.util.Optional;
 import com.example.demo.backend.equipo8.dto.TipoDeBoletaDTO;
 import com.example.demo.backend.equipo8.entity.TipoDeBoletaEntity;
 
-public interface ITipoDeBoletaService {
+public interface ICrudServiceTipoDeBoleta {
 	
 	public List<TipoDeBoletaDTO> findAll();
 	

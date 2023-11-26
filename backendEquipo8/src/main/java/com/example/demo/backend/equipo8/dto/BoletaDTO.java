@@ -2,14 +2,12 @@ package com.example.demo.backend.equipo8.dto;
 
 
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.validation.constraints.NotBlank;
 
 import com.example.demo.backend.equipo8.entity.BoletaEntity;
-import com.example.demo.backend.equipo8.entity.TipoDeBoletaEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

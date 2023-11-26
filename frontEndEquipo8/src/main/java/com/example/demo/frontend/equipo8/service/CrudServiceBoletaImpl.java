@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 @Service
-public class CrudServiceBoletaImpl implements ICrudService {
+public class CrudServiceBoletaImpl implements ICrudServiceBoleta {
 
 	@Override
 	public List<BoletaDTO> findAllREST() {

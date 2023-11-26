@@ -18,35 +18,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-import com.example.demo.backend.equipo8.dto.LocalidadDTO;
-import com.example.demo.backend.equipo8.service.ICrudServiceLocalidad;
+import com.example.demo.backend.equipo8.dto.ProductoDTO;
+import com.example.demo.backend.equipo8.service.IServiceProducto;
 
 @Controller
-@RequestMapping("localidad")
-public class ControladorLocalidad {
+@RequestMapping("producto")
+public class ControladorProducto {
 
 	@Autowired
-	private ICrudServiceLocalidad servicio;
+	private IServiceProducto servicio;
 	
 	@ResponseBody
 	@PostMapping("REST")
-	public LocalidadDTO agregarLocalidad(@Valid @NonNull @RequestBody LocalidadDTO dto) {
+	public ProductoDTO agregarProducto(@Valid @NonNull @RequestBody ProductoDTO dto) {
 		return servicio.save(dto);
 	}
 	
 	
 	@ResponseBody
 	@GetMapping("REST")
-	public List<LocalidadDTO> getAllLocalidades() {
+	public List<ProductoDTO> getAllProductos() {
 		return servicio.findAll();
 	}
 
 	@ResponseBody
 	@GetMapping("REST/{id}")
-	public LocalidadDTO getLocalidadById(@PathVariable("id") int id) {
-		Optional<LocalidadDTO> oDto = servicio.findById(id);
+	public ProductoDTO getProductoById(@PathVariable("id") int id) {
+		Optional<ProductoDTO> oDto = servicio.findById(id);
 		if (oDto.isPresent()) {
-			LocalidadDTO dto = oDto.get();
+			ProductoDTO dto = oDto.get();
 			return dto;
 		} else {
 			return null;
@@ -55,8 +55,8 @@ public class ControladorLocalidad {
 
 	@ResponseBody
 	@PutMapping(("REST"))
-	public LocalidadDTO updateLocalidad(@Valid @NonNull @RequestBody LocalidadDTO dto) {
-		Optional<LocalidadDTO> oDto = servicio.findById(dto.getId());
+	public ProductoDTO updateProducto(@Valid @NonNull @RequestBody ProductoDTO dto) {
+		Optional<ProductoDTO> oDto = servicio.findById(dto.getId());
 		if (oDto.isPresent() == true) {
 			return servicio.save(dto);
 		} else
@@ -65,8 +65,8 @@ public class ControladorLocalidad {
 
 	@ResponseBody
 	@DeleteMapping("REST/{id}")
-	public boolean deleteLocalidadoById(@PathVariable("id") int id) {
-		Optional<LocalidadDTO> oDto = servicio.findById(id);
+	public boolean deleteProductoById(@PathVariable("id") int id) {
+		Optional<ProductoDTO> oDto = servicio.findById(id);
 		if (oDto.isPresent() == true) {
 			servicio.delete(oDto.get());
 			return true;

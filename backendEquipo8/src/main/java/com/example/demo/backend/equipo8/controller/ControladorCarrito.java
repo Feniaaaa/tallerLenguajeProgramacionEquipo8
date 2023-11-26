@@ -18,45 +18,47 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-import com.example.demo.backend.equipo8.dto.LocalidadDTO;
-import com.example.demo.backend.equipo8.service.ICrudServiceLocalidad;
+
+import com.example.demo.backend.equipo8.dto.CarritoDTO;
+import com.example.demo.backend.equipo8.service.IServiceCarrito;
 
 @Controller
-@RequestMapping("localidad")
-public class ControladorLocalidad {
+@RequestMapping("carrito")
+public class ControladorCarrito {
 
 	@Autowired
-	private ICrudServiceLocalidad servicio;
+	private IServiceCarrito servicio;
+	
 	
 	@ResponseBody
 	@PostMapping("REST")
-	public LocalidadDTO agregarLocalidad(@Valid @NonNull @RequestBody LocalidadDTO dto) {
+	public CarritoDTO agregarCarrito(@Valid @NonNull @RequestBody CarritoDTO dto) {
 		return servicio.save(dto);
 	}
 	
 	
 	@ResponseBody
 	@GetMapping("REST")
-	public List<LocalidadDTO> getAllLocalidades() {
+	public List<CarritoDTO> getAllCarritos() {
 		return servicio.findAll();
 	}
 
 	@ResponseBody
 	@GetMapping("REST/{id}")
-	public LocalidadDTO getLocalidadById(@PathVariable("id") int id) {
-		Optional<LocalidadDTO> oDto = servicio.findById(id);
+	public CarritoDTO getCarritoById(@PathVariable("id") int id) {
+		Optional<CarritoDTO> oDto = servicio.findById(id);
 		if (oDto.isPresent()) {
-			LocalidadDTO dto = oDto.get();
+			CarritoDTO dto = oDto.get();
 			return dto;
 		} else {
 			return null;
 		}
-	}
+	} 
 
 	@ResponseBody
 	@PutMapping(("REST"))
-	public LocalidadDTO updateLocalidad(@Valid @NonNull @RequestBody LocalidadDTO dto) {
-		Optional<LocalidadDTO> oDto = servicio.findById(dto.getId());
+	public CarritoDTO updateCarrito(@Valid @NonNull @RequestBody CarritoDTO dto) {
+		Optional<CarritoDTO> oDto = servicio.findById(dto.getId());
 		if (oDto.isPresent() == true) {
 			return servicio.save(dto);
 		} else
@@ -65,8 +67,8 @@ public class ControladorLocalidad {
 
 	@ResponseBody
 	@DeleteMapping("REST/{id}")
-	public boolean deleteLocalidadoById(@PathVariable("id") int id) {
-		Optional<LocalidadDTO> oDto = servicio.findById(id);
+	public boolean deleteCarritoById(@PathVariable("id") int id) {
+		Optional<CarritoDTO> oDto = servicio.findById(id);
 		if (oDto.isPresent() == true) {
 			servicio.delete(oDto.get());
 			return true;
@@ -75,5 +77,4 @@ public class ControladorLocalidad {
 		}
 	}
 	
-
 }

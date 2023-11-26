@@ -6,7 +6,7 @@ import java.util.Optional;
 import com.example.demo.backend.equipo8.dto.ProveedorDTO;
 
 
-public interface ICrudServiceP {
+public interface ICrudServiceProveedor {
 	
 	public List<ProveedorDTO> findAll();
 

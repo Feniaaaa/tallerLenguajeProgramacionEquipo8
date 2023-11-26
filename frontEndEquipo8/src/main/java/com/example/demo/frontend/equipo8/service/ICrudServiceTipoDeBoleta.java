@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.demo.frontend.equipo8.dto.TipoDeBoletaDTO;
 
-public interface ICrudServiceTB {
+public interface ICrudServiceTipoDeBoleta {
 
 	public List<TipoDeBoletaDTO> findAllREST();
 

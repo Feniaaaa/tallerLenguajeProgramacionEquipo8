@@ -15,7 +15,7 @@ import com.example.demo.backend.equipo8.repository.TipoDeBoletaRepository;
 
 @Component
 @Service
-public class TipoDeBoletaServiceImpl implements ITipoDeBoletaService{
+public class CrudServiceTipoDeBoletaImpl implements ICrudServiceTipoDeBoleta{
 
 	@Autowired
 	private TipoDeBoletaRepository data;

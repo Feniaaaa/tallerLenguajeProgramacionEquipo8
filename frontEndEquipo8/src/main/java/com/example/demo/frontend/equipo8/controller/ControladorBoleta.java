@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.frontend.equipo8.dto.BoletaDTO;
 import com.example.demo.frontend.equipo8.dto.TipoDeBoletaDTO;
-import com.example.demo.frontend.equipo8.service.ICrudService;
-import com.example.demo.frontend.equipo8.service.ICrudServiceTB;
+import com.example.demo.frontend.equipo8.service.ICrudServiceBoleta;
+import com.example.demo.frontend.equipo8.service.ICrudServiceTipoDeBoleta;
 
 
 
@@ -25,10 +25,10 @@ import com.example.demo.frontend.equipo8.service.ICrudServiceTB;
 public class ControladorBoleta {
 
 	@Autowired
-	private ICrudService servicio;
+	private ICrudServiceBoleta servicio;
 	
 	@Autowired
-	private ICrudServiceTB servicio2;
+	private ICrudServiceTipoDeBoleta servicio2;
 	
 	//http://localhost:8081/boleta/listar/REST
 	@GetMapping("listar/REST")

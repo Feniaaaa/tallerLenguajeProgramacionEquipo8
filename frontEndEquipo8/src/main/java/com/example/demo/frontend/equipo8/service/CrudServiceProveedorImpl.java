@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 @Service
-public class CrudServiceProveedorImpl implements ICrudServiceP {
+public class CrudServiceProveedorImpl implements ICrudServiceProveedor {
 
 
 	@Override

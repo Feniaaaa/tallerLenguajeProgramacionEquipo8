@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.demo.frontend.equipo8.dto.LocalidadDTO;
 
-public interface ICrudServiceL {
+public interface ICrudServiceLocalidad {
 
 	public List<LocalidadDTO> findAllREST();
 
