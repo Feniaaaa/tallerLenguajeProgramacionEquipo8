@@ -6,13 +6,13 @@ import com.example.demo.frontend.equipo8.dto.TipoDeBoletaDTO;
 
 public interface ICrudServiceTipoDeBoleta {
 
-	public List<TipoDeBoletaDTO> findAllREST();
+	public List<TipoDeBoletaDTO> findAllREST() throws Exception;
 
-	public TipoDeBoletaDTO findByIdREST(int id);
+	public TipoDeBoletaDTO findByIdREST(int id) throws Exception;
 
-	public TipoDeBoletaDTO saveREST(TipoDeBoletaDTO tipoboleta);
+	public TipoDeBoletaDTO saveREST(TipoDeBoletaDTO tipoboleta) throws Exception;
 
-	public TipoDeBoletaDTO deleteREST(int id);
+	public TipoDeBoletaDTO deleteREST(int id) throws Exception;
 	
 }
 

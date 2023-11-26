@@ -2,7 +2,7 @@ package com.example.demo.frontend.equipo8.controller;
 
 import java.util.List;
 
-
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +29,10 @@ public class ControladorBoleta {
 	
 	@Autowired
 	private ICrudServiceTipoDeBoleta servicio2;
-	
+
 	//http://localhost:8081/boleta/listar/REST
 	@GetMapping("listar/REST")
-	public String listarREST(Model model) {
+	public String listarREST(Model model) throws Exception {
 	    List<BoletaDTO> boletas = servicio.findAllREST();
 	    model.addAttribute("boletas", boletas);
 	    List<TipoDeBoletaDTO> tipoboletas = servicio2.findAllREST();
@@ -49,7 +49,7 @@ public class ControladorBoleta {
 
 	// http://localhost:8081/boleta/REST/id
 	@GetMapping("editar/REST/{id}")
-	public String editarREST(@PathVariable int id, Model model) {
+	public String editarREST(@PathVariable int id, Model model) throws Exception {
 		BoletaDTO boleta = servicio.findByIdREST(id);
 		model.addAttribute("boleta", boleta);
 		return "rest/form";
@@ -57,7 +57,7 @@ public class ControladorBoleta {
 
 	// http://localhost:8081/boleta/grabar/REST
 	@PostMapping("grabar/REST")
-	public String saveREST(@Valid BoletaDTO p, Model model) {
+	public String saveREST(@Valid BoletaDTO p, Model model) throws Exception {
 	TipoDeBoletaDTO tipoBoleta = servicio2.findByIdREST(p.getTipoboleta().getId()); 
 	p.setTipoboleta(tipoBoleta);
     servicio.saveREST(p);
@@ -66,11 +66,14 @@ public class ControladorBoleta {
 
 	// http://localhost:8081/boleta/eliminar/id
 	@GetMapping("eliminar/REST/{id}")
-	public String deleteREST(@PathVariable int id, Model model) {
+	public String deleteREST(@PathVariable int id, Model model) throws Exception {
 		servicio.deleteREST(id);
 		return "redirect:/boleta/listar/REST";
 	}
-	
-	
-	
-}
+			
+
+	}
+
+
+
+

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.frontend.equipo8.dto.CarritoDTO;
+import com.example.demo.frontend.equipo8.dto.ProductoDTO;
 import com.example.demo.frontend.equipo8.dto.UsuarioDTO;
 
 @Controller
@@ -55,6 +57,17 @@ public class ControladorUsuario {
 	public String pagar(Model model) {	
 		return "usuario/pagar";
 	}
+	
+	//http://localhost:8081/usuario/login/homepage/registroVenta/guardar
+	@PostMapping("login/homepage/registroVenta/guardar")
+	public String guardarCarrito(@RequestParam int id, @RequestParam ProductoDTO producto,Model model) {
+		CarritoDTO carrito = new CarritoDTO();
+	    carrito.setId(id);
+	    carrito.setProducto(producto);			
+	    model.addAttribute("carritos", carrito);
+		return "usuario/pagar";
+	}
+		
 	//http://localhost:8081/usuario/login/homepage/informe
 	@GetMapping("login/homepage/informe")
 	public String informe(Model model) {	

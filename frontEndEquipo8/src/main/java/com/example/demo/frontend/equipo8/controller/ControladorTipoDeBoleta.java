@@ -26,7 +26,7 @@ public class ControladorTipoDeBoleta {
 	
 	//http://localhost:8081/tipoboleta/listar/REST
 	@GetMapping("listar/REST")
-	public String listarREST(Model model) {
+	public String listarREST(Model model) throws Exception {
 	    List<TipoDeBoletaDTO> tipoboletas = servicio.findAllREST();
         model.addAttribute("tipoboletas", tipoboletas);
 	    return "rest/index";
@@ -41,7 +41,7 @@ public class ControladorTipoDeBoleta {
 
 	// http://localhost:8081/tipoboleta/REST/id
 	@GetMapping("editar/REST/{id}")
-	public String editarREST(@PathVariable int id, Model model) {
+	public String editarREST(@PathVariable int id, Model model) throws Exception {
 		TipoDeBoletaDTO tipoboleta = servicio.findByIdREST(id);
 		model.addAttribute("tipoboleta", tipoboleta);
 		List<TipoDeBoletaDTO> tipoboletas = servicio.findAllREST();
@@ -51,13 +51,13 @@ public class ControladorTipoDeBoleta {
 	
 	// http://localhost:8081/tipoboleta/grabar/REST
 	@PostMapping("grabar/REST")
-	public String saveREST(@Valid TipoDeBoletaDTO p, Model model) {
+	public String saveREST(@Valid TipoDeBoletaDTO p, Model model) throws Exception {
     servicio.saveREST(p);
     return "redirect:/tipoboleta/listar/REST";
 }
 	// http://localhost:8081/tipoboleta/eliminar/id
 	@GetMapping("eliminar/REST/{id}")
-	public String deleteREST(@PathVariable int id, Model model) {
+	public String deleteREST(@PathVariable int id, Model model) throws Exception {
 		servicio.deleteREST(id);
 		return "redirect:/tipoboleta/listar/REST";
 	}

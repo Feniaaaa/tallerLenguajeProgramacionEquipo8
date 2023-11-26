@@ -6,13 +6,11 @@ import com.example.demo.frontend.equipo8.dto.BoletaDTO;
 
 public interface ICrudServiceBoleta {
 
-	public List<BoletaDTO> findAllREST();
+	public List<BoletaDTO> findAllREST() throws Exception;
 
-	public BoletaDTO findByIdREST(int id);
-
-	public BoletaDTO saveREST(BoletaDTO boleta);
-
-	public BoletaDTO deleteREST(int id);
+	public BoletaDTO findByIdREST(int id) throws Exception;
 	
-	
+	public BoletaDTO saveREST(BoletaDTO boleta) throws Exception;
+
+	public BoletaDTO deleteREST(int id) throws Exception;
 }

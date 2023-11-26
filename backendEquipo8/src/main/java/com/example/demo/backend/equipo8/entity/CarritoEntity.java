@@ -1,10 +1,13 @@
 package com.example.demo.backend.equipo8.entity;
 
 import com.example.demo.backend.equipo8.dto.CarritoDTO;
+import com.example.demo.backend.equipo8.dto.ProductoDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -20,7 +23,7 @@ public class CarritoEntity {
     @ManyToOne
     @JoinColumn(name = "id_producto")
     private ProductoEntity producto;
-
+    
 
     public CarritoEntity(@JsonProperty("id") int id) {
         super();

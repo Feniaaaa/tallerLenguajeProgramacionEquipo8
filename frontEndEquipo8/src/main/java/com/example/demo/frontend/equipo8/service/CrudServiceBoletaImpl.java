@@ -2,11 +2,16 @@ package com.example.demo.frontend.equipo8.service;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
+import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -20,96 +25,117 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Service
 public class CrudServiceBoletaImpl implements ICrudServiceBoleta {
 
+	//Este es el user y password que se validan contra el controlador del backend de acuerdo al SecurityConfig
+    private String getBasicAuthHeader() {
+        String credentials = "admin:1234";
+        return new String(Base64.getEncoder().encodeToString(credentials.getBytes()));
+    }
+    
+    
+	
+    private  HttpHeaders httpHeaders() {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", "Basic " + getBasicAuthHeader());
+        httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        return httpHeaders;
+    }
+	
+    
+    
 	@Override
-	public List<BoletaDTO> findAllREST() {
-		try {
-			ObjectMapper unMapper = new ObjectMapper();
-
-			List<BoletaDTO> boletas = Arrays
-					.asList(unMapper.readValue(new URL("http://localhost:8080/boleta/REST"), BoletaDTO[].class));
-			return boletas;
-
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	@Override
-	public BoletaDTO findByIdREST(int id) {
-		try {
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.APPLICATION_JSON);
-
-			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<BoletaDTO> responseEntity = restTemplate
-					.getForEntity("http://localhost:8080/boleta/REST" + "/" + id, BoletaDTO.class);
-
-			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				BoletaDTO dto = responseEntity.getBody();
-				return dto;
-			} else {
-				System.out.println("A ocurrido un error");
-				return null;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	@Override
-	public BoletaDTO saveREST(BoletaDTO p) {
-		try {
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.APPLICATION_JSON);
-
-			HttpEntity<BoletaDTO> requestEntity = new HttpEntity<>(p, headers);
-
-			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<BoletaDTO> responseEntity = restTemplate.postForEntity("http://localhost:8080/boleta/REST",
-					requestEntity, BoletaDTO.class);
-
-			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				BoletaDTO dto = responseEntity.getBody();
-				return dto;
-			} else {
-				System.out.println("A ocurrido un error");
-				return null;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	@Override
-	public BoletaDTO deleteREST(int id) {
-		try {
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.APPLICATION_JSON);
-
-			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<BoletaDTO> responseEntity = restTemplate
-					.getForEntity("http://localhost:8080/boleta/REST" + "/" + id, BoletaDTO.class);
-
-			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				BoletaDTO dto = responseEntity.getBody();
-
-				restTemplate.delete("http://localhost:8080/boleta/REST" + "/" + id);
-
-				return dto;
-			} else {
-				System.out.println("A ocurrido un error");
-				return null;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+	public List<BoletaDTO> findAllREST() throws Exception {
+		
+		List<BoletaDTO> boletasList = new ArrayList();
+		
+        ResponseEntity<List<BoletaDTO>> responseEntity = new RestTemplate().exchange("http://localhost:8080/boleta/REST",
+                HttpMethod.GET, new HttpEntity<>(httpHeaders()), new ParameterizedTypeReference<List<BoletaDTO>>(){});
+        
+        if (responseEntity.getStatusCode().is2xxSuccessful())
+        {
+        	if (responseEntity.hasBody())
+        	{
+	        	 boletasList = responseEntity.getBody();
+	        }
+        }
+        else
+        {
+        	throw new Exception(this.getClass().getCanonicalName() + " method:findAllREST Error API Rest");
+        }
+		
+		return boletasList;
 	}
 
 	
 	
+	@Override
+	public BoletaDTO findByIdREST(int id) throws Exception {
+		BoletaDTO dto = null;
+
+        ResponseEntity<BoletaDTO> responseEntity = new RestTemplate().exchange("http://localhost:8080/boleta/REST/" + id ,
+                HttpMethod.GET, new HttpEntity<>(httpHeaders()), new ParameterizedTypeReference<BoletaDTO>(){});
+        
+        if (responseEntity.getStatusCode().is2xxSuccessful())
+        {
+        	if (responseEntity.hasBody())
+        	{
+	        	 dto = responseEntity.getBody();
+	        }
+        }
+        else
+        {
+        	throw new Exception(this.getClass().getCanonicalName() + " method:findByIdREST Error API Rest");
+        }
+        return dto;
+	}
+
+	
+	
+	
+	@Override
+	public BoletaDTO saveREST(BoletaDTO p) throws Exception {
+		BoletaDTO dto = null;
+			
+		ResponseEntity<BoletaDTO> responseEntity = new RestTemplate().exchange("http://localhost:8080/boleta/REST",
+                HttpMethod.POST, new HttpEntity<>(p, httpHeaders()), new ParameterizedTypeReference<BoletaDTO>(){});
+		
+        if (responseEntity.getStatusCode().is2xxSuccessful())
+        {
+        	if (responseEntity.hasBody())
+        	{
+	        	 dto = responseEntity.getBody();
+	        }
+        }
+        else
+        {
+        	throw new Exception(this.getClass().getCanonicalName() + " FrontEdnd Service method:saveREST Error API Rest");
+        }
+        return dto;
+
+	}
+	
+	
+	
+
+	@Override
+	public BoletaDTO deleteREST(int id) throws Exception {
+		BoletaDTO dto = null;
+			
+		ResponseEntity<BoletaDTO> responseEntity = new RestTemplate().exchange("http://localhost:8080/boleta/REST/" + id ,
+                HttpMethod.DELETE, new HttpEntity<>(httpHeaders()), new ParameterizedTypeReference<BoletaDTO>(){});
+		
+        if (responseEntity.getStatusCode().is2xxSuccessful())
+        {
+        	if (responseEntity.hasBody())
+        	{
+	        	 dto = responseEntity.getBody();
+	        }
+        }
+        else
+        {
+        	throw new Exception(this.getClass().getCanonicalName() + " FrontEdnd Service method:deleteREST Error API Rest");
+        }
+        return dto;
+
+	}
 
 }
