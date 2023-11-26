@@ -103,9 +103,6 @@
                                 <button class="btn btn-primary menu-button" data-producto="Helado Strawberries" data-precio="3100">Helado Strawberries - $3100</button>
                             </li>
                             <li class="list-group-item">
-                                <button class="btn btn-primary menu-button" data-producto="Palo Frutilla" data-precio="1400">Palo Frutilla - $1400</button>
-                            </li>
-                            <li class="list-group-item">
                                 <button class="btn btn-primary menu-button" data-producto="Helado Chocolate" data-precio="2300">Helado Chocolate - $2300</button>
                             </li>
                             <li class="list-group-item">
@@ -163,7 +160,7 @@
         // Variables para mantener el estado del carrito
         const carrito = [];
         let total = 0;
-        const ivaPorcentaje = 0.16; // Porcentaje de IVA
+        const ivaPorcentaje = 0.19; // Porcentaje de IVA
 
         // Función para agregar al carrito y actualizar la tabla
         function agregarAlCarrito(producto, precio) {
@@ -222,7 +219,8 @@
         function calcularTotal() {
             total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
             const iva = total * ivaPorcentaje;
-            const totalConIVA = total + iva;
+            const totalSinIVA = total - iva;
+            const totalConIVA = totalSinIVA + iva;
 
             const totalElement = document.querySelector('.total');
             const ivaElement = document.querySelector('.iva');

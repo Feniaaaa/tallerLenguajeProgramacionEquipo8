@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 
 
@@ -16,7 +17,10 @@ public class PagoEntity  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    
+    @NotBlank
+    @Column(name = "metodoPago")
+    private String metodoPago;
 
     public PagoEntity(@JsonProperty("id") int id) {
         super();
