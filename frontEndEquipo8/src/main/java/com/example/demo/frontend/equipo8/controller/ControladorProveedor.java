@@ -1,6 +1,8 @@
 package com.example.demo.frontend.equipo8.controller;
+
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.example.demo.frontend.equipo8.dto.LocalidadDTO;
 import com.example.demo.frontend.equipo8.dto.ProveedorDTO;
-import com.example.demo.frontend.equipo8.service.ICrudServiceLocalidad;
+import com.example.demo.frontend.equipo8.dto.LocalidadDTO;
 import com.example.demo.frontend.equipo8.service.ICrudServiceProveedor;
-
+import com.example.demo.frontend.equipo8.service.ICrudServiceLocalidad;
 
 
 
@@ -28,17 +28,16 @@ public class ControladorProveedor {
 	private ICrudServiceProveedor servicio;
 	
 	@Autowired
-	private ICrudServiceLocalidad servicioL;
-	
+	private ICrudServiceLocalidad servicio2;
 
-	// http://localhost:8081/proveedor/listar/REST
+	//http://localhost:8081/boleta/listar/REST
 	@GetMapping("listar/REST")
-	public String listarREST(Model model) {
-		List<ProveedorDTO> proveedores = servicio.findAllREST();
-		model.addAttribute("proveedores", proveedores);
-		List<LocalidadDTO> localidades = servicioL.findAllREST();
-		model.addAttribute("localidades", localidades);
-		return "rest/indexP";
+	public String listarREST(Model model) throws Exception {
+	    List<ProveedorDTO> proveedores = servicio.findAllREST();
+	    List<LocalidadDTO> localidades = servicio2.findAllREST();
+	    model.addAttribute("proveedores", proveedores);
+        model.addAttribute("localidades", localidades);
+	    return "rest/indexP";
 	}
 
 	// http://localhost:8081/proveedor/listar/nuevo/REST
@@ -50,7 +49,7 @@ public class ControladorProveedor {
 
 	// http://localhost:8081/proveedor/REST/id
 	@GetMapping("editar/REST/{id}")
-	public String editarREST(@PathVariable int id, Model model) {
+	public String editarREST(@PathVariable int id, Model model) throws Exception {
 		ProveedorDTO proveedor = servicio.findByIdREST(id);
 		model.addAttribute("proveedor", proveedor);
 		return "rest/formP";
@@ -58,19 +57,24 @@ public class ControladorProveedor {
 
 	// http://localhost:8081/proveedor/grabar/REST
 	@PostMapping("grabar/REST")
-	public String saveREST(@Valid ProveedorDTO pr, Model model) {
-		LocalidadDTO localidad = servicioL.findByIdREST(pr.getLocalidad().getId()); 
-	    pr.setLocalidad(localidad);
-		servicio.saveREST(pr);
-		return "redirect:/proveedor/listar/REST";
-	}
+	public String saveREST(@Valid ProveedorDTO p, Model model) throws Exception {
+	LocalidadDTO localidad = servicio2.findByIdREST(p.getLocalidad().getId()); 
+	p.setLocalidad(localidad);
+    servicio.saveREST(p);
+    return "redirect:/proveedor/listar/REST";
+}
 
 	// http://localhost:8081/proveedor/eliminar/id
 	@GetMapping("eliminar/REST/{id}")
-	public String deleteREST(@PathVariable int id, Model model) {
+	public String deleteREST(@PathVariable int id, Model model) throws Exception {
 		servicio.deleteREST(id);
 		return "redirect:/proveedor/listar/REST";
 	}
-	
-	
-}
+			
+
+	}
+
+
+
+
+

@@ -2,18 +2,22 @@ package com.example.demo.frontend.equipo8.service;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
+import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.demo.frontend.equipo8.dto.ProveedorDTO;
 import com.example.demo.frontend.equipo8.dto.LocalidadDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -21,96 +25,118 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Service
 public class CrudServiceLocalidadImpl implements ICrudServiceLocalidad {
 
-
+	//Este es el user y password que se validan contra el controlador del backend de acuerdo al SecurityConfig
+    private String getBasicAuthHeader() {
+        String credentials = "admin:1234";
+        return new String(Base64.getEncoder().encodeToString(credentials.getBytes()));
+    }
+    
+    
+	
+    private  HttpHeaders httpHeaders() {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", "Basic " + getBasicAuthHeader());
+        httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        return httpHeaders;
+    }
+	
+    
+    
 	@Override
-	public List<LocalidadDTO> findAllREST() {
-		try {
-			ObjectMapper unMapper = new ObjectMapper();
-
-			List<LocalidadDTO> localidades = Arrays
-					.asList(unMapper.readValue(new URL("http://localhost:8080/localidad/REST"), LocalidadDTO[].class));
-			return localidades;
-
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
+	public List<LocalidadDTO> findAllREST() throws Exception {
+		
+		List<LocalidadDTO> localidadesList = new ArrayList();
+		
+        ResponseEntity<List<LocalidadDTO>> responseEntity = new RestTemplate().exchange("http://localhost:8080/localidad/REST",
+                HttpMethod.GET, new HttpEntity<>(httpHeaders()), new ParameterizedTypeReference<List<LocalidadDTO>>(){});
+        
+        if (responseEntity.getStatusCode().is2xxSuccessful())
+        {
+        	if (responseEntity.hasBody())
+        	{
+	        	 localidadesList = responseEntity.getBody();
+	        }
+        }
+        else
+        {
+        	throw new Exception(this.getClass().getCanonicalName() + " method:findAllREST Error API Rest");
+        }
+		
+		return localidadesList;
 	}
 
+	
+	
 	@Override
-	public LocalidadDTO findByIdREST(int id) {
-		try {
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.APPLICATION_JSON);
+	public LocalidadDTO findByIdREST(int id) throws Exception {
+		LocalidadDTO dto = null;
 
-			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<LocalidadDTO> responseEntity = restTemplate
-					.getForEntity("http://localhost:8080/localidad/REST" + "/" + id, LocalidadDTO.class);
-
-			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				LocalidadDTO dto = responseEntity.getBody();
-				return dto;
-			} else {
-				System.out.println("A ocurrido un error");
-				return null;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+        ResponseEntity<LocalidadDTO> responseEntity = new RestTemplate().exchange("http://localhost:8080/localidad/REST/" + id ,
+                HttpMethod.GET, new HttpEntity<>(httpHeaders()), new ParameterizedTypeReference<LocalidadDTO>(){});
+        
+        if (responseEntity.getStatusCode().is2xxSuccessful())
+        {
+        	if (responseEntity.hasBody())
+        	{
+	        	 dto = responseEntity.getBody();
+	        }
+        }
+        else
+        {
+        	throw new Exception(this.getClass().getCanonicalName() + " method:findByIdREST Error API Rest");
+        }
+        return dto;
 	}
 
+	
+	
+	
 	@Override
-	public LocalidadDTO saveREST(LocalidadDTO l) {
-		try {
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.APPLICATION_JSON);
+	public LocalidadDTO saveREST(LocalidadDTO p) throws Exception {
+		LocalidadDTO dto = null;
+			
+		ResponseEntity<LocalidadDTO> responseEntity = new RestTemplate().exchange("http://localhost:8080/localidad/REST",
+                HttpMethod.POST, new HttpEntity<>(p, httpHeaders()), new ParameterizedTypeReference<LocalidadDTO>(){});
+		
+        if (responseEntity.getStatusCode().is2xxSuccessful())
+        {
+        	if (responseEntity.hasBody())
+        	{
+	        	 dto = responseEntity.getBody();
+	        }
+        }
+        else
+        {
+        	throw new Exception(this.getClass().getCanonicalName() + " FrontEdnd Service method:saveREST Error API Rest");
+        }
+        return dto;
 
-			HttpEntity<LocalidadDTO> requestEntity = new HttpEntity<>(l, headers);
-
-			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<LocalidadDTO> responseEntity = restTemplate.postForEntity("http://localhost:8080/localidad/REST",
-					requestEntity, LocalidadDTO.class);
-
-			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				LocalidadDTO dto = responseEntity.getBody();
-				return dto;
-			} else {
-				System.out.println("A ocurrido un error");
-				return null;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	@Override
-	public LocalidadDTO deleteREST(int id) {
-		try {
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.APPLICATION_JSON);
-
-			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<LocalidadDTO> responseEntity = restTemplate
-					.getForEntity("http://localhost:8080/localidad/REST" + "/" + id, LocalidadDTO.class);
-
-			if (responseEntity.getStatusCode().is2xxSuccessful()) {
-				LocalidadDTO dto = responseEntity.getBody();
-
-				restTemplate.delete("http://localhost:8080/localidad/REST" + "/" + id);
-
-				return dto;
-			} else {
-				System.out.println("A ocurrido un error");
-				return null;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
 	}
 	
 	
+	
+
+	@Override
+	public LocalidadDTO deleteREST(int id) throws Exception {
+		LocalidadDTO dto = null;
+			
+		ResponseEntity<LocalidadDTO> responseEntity = new RestTemplate().exchange("http://localhost:8080/localidad/REST/" + id ,
+                HttpMethod.DELETE, new HttpEntity<>(httpHeaders()), new ParameterizedTypeReference<LocalidadDTO>(){});
+		
+        if (responseEntity.getStatusCode().is2xxSuccessful())
+        {
+        	if (responseEntity.hasBody())
+        	{
+	        	 dto = responseEntity.getBody();
+	        }
+        }
+        else
+        {
+        	throw new Exception(this.getClass().getCanonicalName() + " FrontEdnd Service method:deleteREST Error API Rest");
+        }
+        return dto;
+
+	}
 
 }
+
