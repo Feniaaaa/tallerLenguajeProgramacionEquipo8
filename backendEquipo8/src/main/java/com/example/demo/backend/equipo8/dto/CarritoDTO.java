@@ -17,15 +17,13 @@ import lombok.NoArgsConstructor;
 public class CarritoDTO{
 	private int id;
 
-	private ProductoDTO producto;
+	private List<String> carritoCompra;
 	
 	
 	public CarritoEntity toEntity() {
 		CarritoEntity e = new CarritoEntity();
 		e.setId(this.getId());
-		if (this.getProducto() != null) {
-		e.setProducto(this.getProducto().toEntity());
-		}
+		e.setCarritoCompra(this.getCarritoCompra());
 		return e;
 	}
 	

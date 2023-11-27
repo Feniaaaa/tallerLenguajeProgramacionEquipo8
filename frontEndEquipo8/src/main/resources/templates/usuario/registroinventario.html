@@ -109,24 +109,22 @@
             <!-- Contenedor con fondo blanco y bordes curvos para Sabor, Precio y Fecha de vencimiento -->
             <div class="field-container">
                 <!-- Cambia el color del texto de las etiquetas label a negro -->
-                <label for="flavor">Sabor:</label>
-                <select id="flavor" name="flavor" required>
-                    <option value="" disabled selected>Seleccionar un sabor</option>
-                    <option value="helado1">Helado Frutilla</option>
-                    <option value="helado2">Helado Strawberries </option>
-                    <option value="helado4">Helado Chocolate </option>
-                    <option value="helado5">Helado de Vainilla </option>
-                    <option value="helado6">Helado de Menta </option>
-                    <option value="helado7">Helado de Limón </option>
-                    <option value="helado8">Helado de Cookies y Crema </option>
-                    <option value="helado9">Helado de Fresa </option>
-                </select>
-                <label for="price">Litros:</label>
-                <input type="number" id="price" name="price" min="0" step="1" required>
-                <!-- Cambia la fecha de vencimiento a "12/11/2023" -->
-                <label for="expirationDate">Fecha de vencimiento:</label>
-                <input type="date" id="expirationDate" name="expirationDate" value="2023-11-12">
+                <label for="nombre">Sabor:</label>
+				<input type="text" id="nombre" name="nombre" required placeholder="Ingrese el sabor">
+				
+				<!-- Cambia el nombre del campo y ajusta el tipo -->
+				<label for="precio">Litros:</label>
+				<input type="number" id="precio" name="precio" min="0" step="1" required>
+				
+				<!-- Cambia el nombre del campo y ajusta el tipo -->
+				<label for="fechaVencimiento">Fecha de vencimiento:</label>
+				<input type="date" id="fechaVencimiento" name="fechaVencimiento" value="2023-11-12">
             </div>
+            
+            
+            
+            
+            
             <!-- Agrega espacio arriba del botón -->
             <button type="submit">Guardar</button>
             <div id="confirmationMessage" style="display: none; color: green; text-align: center;">

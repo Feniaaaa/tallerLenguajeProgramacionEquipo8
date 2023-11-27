@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 
 @Data
@@ -19,19 +20,21 @@ import javax.persistence.*;
 public class CarritoEntity {
     @Id
     private int id;
-
-    @ManyToOne
-    @JoinColumn(name = "id_producto")
-    private ProductoEntity producto;
+    
+    @ElementCollection
+    @CollectionTable(name = "carrito_compra", joinColumns = @JoinColumn(name = "carrito_id"))
+    private List<String> carritoCompra;
     
 
-    public CarritoEntity(@JsonProperty("id") int id) {
+    public CarritoEntity(@JsonProperty("id") int id,@JsonProperty("carritoCompra") List<String> carritoCompra) {
         super();
         this.id = id;
+        this.carritoCompra = carritoCompra;
     }
     public CarritoDTO toDTO() {
     	CarritoDTO dto = new CarritoDTO();
 		dto.setId(this.getId());
+		dto.setCarritoCompra(this.getCarritoCompra());
 		return dto;
 	}
 }

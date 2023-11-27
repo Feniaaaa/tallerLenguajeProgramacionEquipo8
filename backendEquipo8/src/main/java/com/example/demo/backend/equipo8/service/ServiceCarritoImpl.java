@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 
 import com.example.demo.backend.equipo8.dto.CarritoDTO;
+import com.example.demo.backend.equipo8.dto.LoteDTO;
 import com.example.demo.backend.equipo8.entity.CarritoEntity;
+import com.example.demo.backend.equipo8.entity.LoteEntity;
 import com.example.demo.backend.equipo8.entity.ProductoEntity;
 import com.example.demo.backend.equipo8.repository.ICarritoRepository;
 
@@ -26,17 +28,12 @@ public class ServiceCarritoImpl implements IServiceCarrito {
 
 	public List<CarritoDTO> findAll() {
 		List<CarritoEntity> listE = (List<CarritoEntity>) data.findAll();
-		List<CarritoDTO> listDto = new ArrayList<>();
+		List<CarritoDTO> listDto = new ArrayList<CarritoDTO>();
 		for (CarritoEntity e : listE) {
-			CarritoDTO carritoDTO = e.toDTO();
-            ProductoEntity productoEntity = e.getProducto();
-            if (productoEntity != null) {
-            	carritoDTO.setProducto(productoEntity.toDTO());
-            }
-            listDto.add(carritoDTO);
-        }
-        return listDto;
-    }
+			listDto.add(e.toDTO());
+		}
+		return listDto;
+	}
 
 	public Optional<CarritoDTO> findById(int id) {
 		Optional<CarritoEntity> oe = data.findById(id);

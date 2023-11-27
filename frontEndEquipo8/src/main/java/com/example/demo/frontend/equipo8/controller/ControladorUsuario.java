@@ -1,5 +1,7 @@
 package com.example.demo.frontend.equipo8.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,15 +60,12 @@ public class ControladorUsuario {
 		return "usuario/pagar";
 	}
 	
+	/*
 	//http://localhost:8081/usuario/login/homepage/registroVenta/guardar
 	@PostMapping("login/homepage/registroVenta/guardar")
-	public String guardarCarrito(@RequestParam int id, @RequestParam ProductoDTO producto,Model model) {
-		CarritoDTO carrito = new CarritoDTO();
-	    carrito.setId(id);
-	    carrito.setProducto(producto);			
-	    model.addAttribute("carritos", carrito);
+	public String guardarCarrito(Model model) {	
 		return "usuario/pagar";
-	}
+	} ´*/
 		
 	//http://localhost:8081/usuario/login/homepage/informe
 	@GetMapping("login/homepage/informe")
