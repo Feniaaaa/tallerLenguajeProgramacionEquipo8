@@ -97,6 +97,8 @@
                 montoInput.value = totalCarrito || '0';
             }
         });
+        
+        localStorage.setItem('metodoPago', metodoPago);
 
         function realizarPago() {
             window.location.href = 'http://localhost:8081/usuario/login/homepage';

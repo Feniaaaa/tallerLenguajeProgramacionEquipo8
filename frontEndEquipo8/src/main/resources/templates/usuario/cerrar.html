@@ -143,7 +143,9 @@
                 <li>Efectivo: $<span>375,000</span></li>
                 <li>Debito: $<span>130,000</span></li>
                 <li>Credito: $<span>225,000</span></li>
-                <li class="total">Total recaudado: $<span>730,000</span></li>
+                <label for="monto">Total recaudado:</label>
+        		<input type="number" id="monto" name="monto" min="0" step="1" value="0" readonly>
+
             </ul>
         </div>
         <div class="btn-container">
@@ -167,6 +169,18 @@
         const confirmarButton = document.getElementById("confirmar-cierre");
         const cancelarButton = document.getElementById("cancelar-cierre");
         const passwordInput = document.getElementById("password");
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Recupera el total almacenado en localStorage
+            const totalCarrito = localStorage.getItem('totalCarrito');
+
+            // Actualiza el valor del campo "monto" en el formulario
+            const montoInput = document.getElementById('monto');
+            if (montoInput) {
+                montoInput.value = totalCarrito || '0';
+            }
+        });
+        
 
         openPopupButton.addEventListener("click", () => {
             popupContainer.style.display = "flex";
