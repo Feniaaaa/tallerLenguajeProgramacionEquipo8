@@ -116,14 +116,31 @@
         localStorage.setItem('metodoPago', metodoPago);
 
         function realizarPago() {
-			
-			// Sumar el monto al total acumulado
+            // Obtener el método de pago seleccionado
+            const metodoPago = document.getElementById('metodoPago').value;
+            
+            // Obtener el monto actual a pagar
             const montoActual = parseFloat(document.getElementById('monto').value) || 0;
+
+            // Actualizar las constantes globales en localStorage según el método de pago
+            if (metodoPago === 'efectivo') {
+                localStorage.setItem('totalEfectivo', (parseFloat(localStorage.getItem('totalEfectivo')) || 0) + montoActual);
+            } else if (metodoPago === 'debito') {
+                localStorage.setItem('totalDebito', (parseFloat(localStorage.getItem('totalDebito')) || 0) + montoActual);
+            } else if (metodoPago === 'credito') {
+                localStorage.setItem('totalCredito', (parseFloat(localStorage.getItem('totalCredito')) || 0) + montoActual);
+            }
+            
+            // Incrementar el contador de pedidos realizados
+        	const pedidosRealizados = parseInt(localStorage.getItem('pedidosRealizados')) || 0;
+        	localStorage.setItem('pedidosRealizados', pedidosRealizados + 1);
+
+            // Sumar el monto al total acumulado
             sumaTotal += montoActual;
-			
-			// Almacena la nueva sumaTotal en localStorage
+
+            // Almacena la nueva sumaTotal en localStorage
             localStorage.setItem('sumaTotal', sumaTotal);
-			
+
             window.location.href = 'http://localhost:8081/usuario/login/homepage';
             alert('¡Pago exitoso!');
         }

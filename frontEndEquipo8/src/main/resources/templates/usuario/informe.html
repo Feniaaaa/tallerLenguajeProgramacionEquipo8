@@ -130,11 +130,12 @@
     <main>
         <section>
             <h2>Dinero Recaudado</h2>
-            <p>$ 65,321,480</p>
+            <!-- Mostrar la suma total almacenada en localStorage -->
+            <p id="dinero-recaudado">$ 0.00</p>
         </section>
         <section>
             <h2>Pedidos realizados</h2>
-            <p>50</p>
+            <p id="pedidosRealizados">0</p>
         </section>
     </main>
     <div class="button-container">
@@ -175,6 +176,17 @@
             if (password === "1234") {
                 // Contraseña válida, realizar la acción
                 console.log("Contraseña correcta. Generando informe...");
+                
+                // Recuperar la suma total almacenada en localStorage
+                const sumaTotal = parseFloat(localStorage.getItem('sumaTotal')) || 0;
+                
+                // Mostrar la suma total en la sección correspondiente
+                document.getElementById('dinero-recaudado').textContent = `$ ${sumaTotal.toFixed(2)}`;
+                
+                // Actualizar el valor de pedidos realizados
+        		const pedidosRealizados = parseInt(localStorage.getItem('pedidosRealizados')) || 0;
+        		document.getElementById('pedidosRealizados').textContent = pedidosRealizados.toString();
+                
                 // Puedes agregar aquí la lógica para generar el informe
                 // Por ahora, simplemente cerramos el pop-up
                 popup.style.display = "none";

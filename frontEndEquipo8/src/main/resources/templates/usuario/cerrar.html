@@ -140,9 +140,9 @@
         <div class="resumen">
             <h2>Resumen de ventas del día</h2>
             <ul>
-                <li>Efectivo: $<span>375,000</span></li>
-                <li>Debito: $<span>130,000</span></li>
-                <li>Credito: $<span>225,000</span></li>
+                <li id="totalEfectivo">Efectivo: $<span>0.00</span></li>
+                <li id="totalDebito">Debito: $<span>0.00</span></li>
+                <li id="totalCredito">Credito: $<span>0.00</span></li>
                 <label for="monto">Total recaudado:</label>
         		<input type="number" id="monto" name="monto" min="0" step="1" value="0" readonly>
 
@@ -174,6 +174,16 @@
             // Recupera el total almacenado en localStorage
             const totalCarrito = localStorage.getItem('totalCarrito');
             const montoInput = document.getElementById('monto');
+            
+            // Recupera y muestra las sumas totales almacenadas en localStorage
+            const totalEfectivo = parseFloat(localStorage.getItem('totalEfectivo')) || 0;
+            const totalDebito = parseFloat(localStorage.getItem('totalDebito')) || 0;
+            const totalCredito = parseFloat(localStorage.getItem('totalCredito')) || 0;
+            
+            // Muestra los totales en los campos correspondientes
+            document.getElementById('totalEfectivo').textContent = `Efectivo: $${totalEfectivo.toFixed(2)}`;
+            document.getElementById('totalDebito').textContent = `Debito: $${totalDebito.toFixed(2)}`;
+            document.getElementById('totalCredito').textContent = `Credito: $${totalCredito.toFixed(2)}`;
 
 
             // Actualiza el valor del campo "monto" en el formulario
