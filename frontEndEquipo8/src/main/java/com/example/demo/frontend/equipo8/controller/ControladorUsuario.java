@@ -17,6 +17,11 @@ import com.example.demo.frontend.equipo8.dto.UsuarioDTO;
 @RequestMapping("usuario")
 public class ControladorUsuario {
 	
+	
+	
+	// Usuario : Empleado1
+	// Contraseña : 1234
+	
 	//http://localhost:8081/usuario/login
 	@GetMapping("/login")
 	public String login(Model model) {	

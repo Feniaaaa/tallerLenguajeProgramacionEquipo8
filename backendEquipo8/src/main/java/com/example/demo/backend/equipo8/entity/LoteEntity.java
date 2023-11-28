@@ -27,15 +27,15 @@ public class LoteEntity {
     
     @NotBlank
     @Column(name = "litros")
-    private int litros;
+    private String litros;
     
     @NotBlank
     @Column(name = "fechaVencimiento")
-    private Date fechaVencimiento;
+    private String fechaVencimiento;
 
 
 
-    public LoteEntity(@JsonProperty("id") int id,@JsonProperty("nombre") String nombre, @JsonProperty("litros") int litros, @JsonProperty("fechaVencimiento") Date fechaVencimiento) {
+    public LoteEntity(@JsonProperty("id") int id,@JsonProperty("nombre") String nombre, @JsonProperty("litros") String litros, @JsonProperty("fechaVencimiento") String fechaVencimiento) {
         super();
         this.id = id;
         this.nombre = nombre;

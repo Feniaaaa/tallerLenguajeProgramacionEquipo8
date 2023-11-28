@@ -15,7 +15,7 @@ public class LoteDTO {
 
     private String nombre;
     
-    private int litros;
+    private String litros;
     
-    private Date fechaVencimiento;
+    private String fechaVencimiento;
 }
