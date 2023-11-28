@@ -87,6 +87,21 @@
     </form>
 
     <script>
+    	
+    	// Recuperar o inicializar la variable global sumaTotal desde localStorage
+        let sumaTotal = parseFloat(localStorage.getItem('sumaTotal')) || 0;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Recupera el total almacenado en localStorage
+            const totalCarrito = localStorage.getItem('totalCarrito');
+
+            // Actualiza el valor del campo "monto" en el formulario
+            const montoInput = document.getElementById('monto');
+            if (montoInput) {
+                montoInput.value = totalCarrito || '0';
+            }
+        });
+    	
         document.addEventListener('DOMContentLoaded', function() {
             // Recupera el total almacenado en localStorage
             const totalCarrito = localStorage.getItem('totalCarrito');
@@ -101,6 +116,14 @@
         localStorage.setItem('metodoPago', metodoPago);
 
         function realizarPago() {
+			
+			// Sumar el monto al total acumulado
+            const montoActual = parseFloat(document.getElementById('monto').value) || 0;
+            sumaTotal += montoActual;
+			
+			// Almacena la nueva sumaTotal en localStorage
+            localStorage.setItem('sumaTotal', sumaTotal);
+			
             window.location.href = 'http://localhost:8081/usuario/login/homepage';
             alert('¡Pago exitoso!');
         }

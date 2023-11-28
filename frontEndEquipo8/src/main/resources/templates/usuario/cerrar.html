@@ -173,12 +173,18 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Recupera el total almacenado en localStorage
             const totalCarrito = localStorage.getItem('totalCarrito');
+            const montoInput = document.getElementById('monto');
+
 
             // Actualiza el valor del campo "monto" en el formulario
-            const montoInput = document.getElementById('monto');
             if (montoInput) {
                 montoInput.value = totalCarrito || '0';
             }
+            
+            // Recupera y muestra la sumaTotal almacenada en localStorage
+            const sumaTotal = parseFloat(localStorage.getItem('sumaTotal')) || 0;
+            montoInput.value = sumaTotal.toFixed(2);
+            
         });
         
 
